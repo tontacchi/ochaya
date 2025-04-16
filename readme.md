@@ -26,3 +26,13 @@ It serves as a personal teahouse for the tools I rely on daily:
 └── nvim/
 ```
 
+## Usage
+
+Fork the directory and store into a hidden config directory:
+
+```shell
+git clone https://github.com/tontacchi/ochaya ~/.ochaya
+cd .ochaya
+./setup.sh
+```
+
