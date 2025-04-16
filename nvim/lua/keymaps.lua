@@ -50,6 +50,10 @@ vim.keymap.set("v", "<space>y", "\"+y")  -- 1) highlighted
 vim.keymap.set("n", "<space>y", "\"+Y")  -- 2) current line
 vim.keymap.set("n", "<space>Y", "\"+y")  -- 3) starts motion. lines jumped are yanked
 
+-- don't yank to register
+vim.keymap.set("n", "x", '"_x')
+vim.keymap.set("v", "x", '"_x')
+
 -- append line below w/ space. cursor stays in place
 vim.keymap.set("n", "J", "mzJ`z")
 
