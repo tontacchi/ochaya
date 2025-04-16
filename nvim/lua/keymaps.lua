@@ -33,6 +33,9 @@ vim.keymap.set("n", "<space>te", function()
   vim.cmd.wincmd("L")
 end)
 
+-- floating terminal
+vim.keymap.set("n", "<space>tf", require("plugin.floaterminal").toggle, { desc = "Toggle Floating Terminal" })
+
 -- small terminal at bottom of screen
 vim.keymap.set("n", "<leader>ts", function()
 	vim.cmd.new()
