@@ -19,16 +19,29 @@ local telescopeTable = {
 		},
 		defaults = {
 		  file_ignore_patterns = {
-			"venv/",             -- Ignore the virtual environment directory
-			"%.pyc$",            -- Example: Ignore compiled Python files
-			".git/",             -- Ignore Git directories
+			-- python files
+			"venv/",
+			"%.pyc$",
+			"%.pickle",
 			"requirements.txt",
+
+			-- git directories
+			".git/",
+
+			-- gcc intermediate compilation outputs
 			"%.out",
 			"%.o",
 			"%.i",
 			"%.s",
-			"%.pickle",
-			"%.db"
+
+			-- databases
+			"%.db",
+
+			-- images
+			"%.png",
+			"%.jpeg",
+			"%.jpg",
+			"%.gif",
 		  },
 		}
 	  })
