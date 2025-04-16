@@ -26,13 +26,25 @@ It serves as a personal teahouse for the tools I rely on daily:
 └── nvim/
 ```
 
+## 🔗 Symlinks
+
+```txt
+~/.ochaya/bashrc          ->  ~/.bashrc
+~/.ochaya/bash_aliases    ->  ~/.bash_aliases
+~/.ochaya/bash_functions  ->  ~/.bash_functions
+~/.ochaya/vimrc           ->  ~/.vimrc
+~/.ochaya/tmux.conf       ->  ~/.tmux.conf
+~/.ochaya/nvim/           ->  ~/.config/nvim/
+```
+
 ## Usage
 
-Fork the directory and store into a hidden config directory:
+1. fork the directory into a hidden config directory
+2. run the bash script to create symlinks
 
 ```shell
 git clone https://github.com/tontacchi/ochaya ~/.ochaya
-cd .ochaya
+cd ~/.ochaya
 ./setup.sh
 ```
 
