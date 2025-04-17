@@ -2,7 +2,8 @@
 fzf_cmd="fzf --height=50% --layout=reverse --border=rounded --margin=3% --color=dark"
 
 # used for mark() & jump()
-mark_dir=$HOME
+JUMP_LIST=($HOME)
+JUMP_INDEX=1
 #---[ Global Variables ]--------------------------------------------------------
 
 
@@ -19,6 +20,50 @@ function confignvim() {
 }
 
 #---[ Vitals ]------------------------------------------------------------------
+
+
+#---[ Jump List ]---------------------------------------------------------------
+function mark() {
+	JUMP_LIST+=("$(pwd)")
+	JUMP_INDEX=$((${#JUMP_LIST[@]} - 1))
+}
+
+function b() {
+  if (( JUMP_INDEX > 0 )); then
+    JUMP_INDEX=$((JUMP_INDEX - 1))
+    cd "${JUMP_LIST[$JUMP_INDEX]}" || return
+
+	echo ""
+	local outputDir=$(pwd | sed "s|^$HOME|~|")
+    echo -e "\e[0;36m$outputDir\033[0m"
+  else
+    echo "No earlier entry in jump list."
+  fi
+}
+
+function f() {
+  if (( JUMP_INDEX + 1 < ${#JUMP_LIST[@]} )); then
+    JUMP_INDEX=$((JUMP_INDEX + 1))
+    cd "${JUMP_LIST[$JUMP_INDEX]}" || return
+
+	echo ""
+	local outputDir=$(pwd | sed "s|^$HOME|~|")
+    echo -e "\e[0;36m$outputDir\033[0m"
+  else
+    echo "No later entry in jump list."
+  fi
+}
+
+function jlist() {
+  for i in "${!JUMP_LIST[@]}"; do
+    marker=" "
+    [[ $i -eq $JUMP_INDEX ]] && marker=">"
+    echo "[$i] $marker ${JUMP_LIST[$i]}"
+  done
+}
+
+#---[ Jump List ]---------------------------------------------------------------
+
 
 #---[ Source Code Manipulation ]------------------------------------------------
 # Python 3
@@ -74,8 +119,10 @@ function sd()
 
 	# go to selected directory & print the path
     cd "$target_dir"
+	mark
+
     clear
-    local outputDir=$(pwd | sed "s|^$HOME|~|")
+	local outputDir=$(pwd | sed "s|^$HOME|~|")
     echo -e "\e[0;36m$outputDir\033[0m"
 }
 
@@ -93,6 +140,8 @@ function hd()
     fi
 
     cd "$dir"
+	mark
+
     clear
     local outputDir=$(pwd | sed "s|^$HOME|~|")
     echo -e "\e[0;36m$outputDir\033[0m"
@@ -310,21 +359,6 @@ function path() {
 
 # clear screen & print current path
 function c() {
-	clear
-    local outputDir=$(pwd | sed "s|^$HOME|~|")
-    echo -e "\e[0;36m$outputDir\033[0m"
-}
-
-function mark() {
-	mark_dir=$(pwd)
-	echo "set mark: $(pwd)"
-}
-
-function jump() {
-	local temp=$(pwd)
-	cd ${mark_dir}
-	mark_dir=${temp}
-
 	clear
     local outputDir=$(pwd | sed "s|^$HOME|~|")
     echo -e "\e[0;36m$outputDir\033[0m"
