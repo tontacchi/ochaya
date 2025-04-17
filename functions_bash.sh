@@ -13,13 +13,7 @@ fzf_cmd="fzf --height=50% --layout=reverse --border=rounded --margin=3% --color=
 
 function confignvim() {
 	local nvim_config_path="$HOME/.config/nvim"
-	cd "${nvim_config_path}"
-
-	clear
-    local outputDir=$(pwd | sed "s|^$HOME|~|")
-    echo -e "\e[0;36m$outputDir\033[0m"
-
-	nvim .
+	(cd "${nvim_config_path}" && nvim .)
 }
 
 #---[ Vitals ]------------------------------------------------------------------
