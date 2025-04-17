@@ -1,6 +1,8 @@
 #---[ Global Variables ]--------------------------------------------------------
 fzf_cmd="fzf --height=50% --layout=reverse --border=rounded --margin=3% --color=dark"
 
+# used for mark() & jump()
+mark_dir=$HOME
 #---[ Global Variables ]--------------------------------------------------------
 
 
@@ -319,6 +321,20 @@ function c() {
     echo -e "\e[0;36m$outputDir\033[0m"
 }
 
+function mark() {
+	mark_dir=$(pwd)
+	echo "set mark: $(pwd)"
+}
+
+function jump() {
+	local temp=$(pwd)
+	cd ${mark_dir}
+	mark_dir=${temp}
+
+	clear
+    local outputDir=$(pwd | sed "s|^$HOME|~|")
+    echo -e "\e[0;36m$outputDir\033[0m"
+}
 
 # i am a self-respecting, functional adult
 function uwu_senpai_pweez() {
