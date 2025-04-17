@@ -1,3 +1,11 @@
+-- esc w/ alt + d
+vim.keymap.set("v", "<M-d>", "<esc>")
+vim.keymap.set("i", "<M-d>", "<esc>")
+
+-- no really, learn the habit
+vim.keymap.set("v", "<esc>", "<cmd>echo<cr>")
+vim.keymap.set("i", "<esc>", "<cmd>echo<cr>")
+
 -- source under cursor / highlight
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<cr>")  -- source & run entire file
 vim.keymap.set("n", "<space>x", ":.lua<cr>")                 -- run current line
