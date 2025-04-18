@@ -13,25 +13,12 @@ It serves as a personal teahouse for the tools I rely on daily:
 - Symlink-based setup for clarity and control
 - Peacefully version-controlled with Git
 
-## 📁 Structure
-
-```txt
-.ochaya/
-├── bashrc
-├── bash_aliases.sh
-├── bash_functions.sh
-├── vimrc
-├── tmux.conf
-├── setup.sh
-└── nvim/
-```
-
 ## 🔗 Symlinks
 
 ```txt
 ~/.ochaya/bashrc          ->  ~/.bashrc
-~/.ochaya/bash_aliases    ->  ~/.bash_aliases
-~/.ochaya/bash_functions  ->  ~/.bash_functions
+~/.ochaya/aliases_bash    ->  ~/.bash_aliases
+~/.ochaya/functions_bash  ->  ~/.bash_functions
 ~/.ochaya/vimrc           ->  ~/.vimrc
 ~/.ochaya/tmux.conf       ->  ~/.tmux.conf
 ~/.ochaya/nvim/           ->  ~/.config/nvim/
@@ -45,6 +32,6 @@ It serves as a personal teahouse for the tools I rely on daily:
 ```shell
 git clone https://github.com/tontacchi/ochaya ~/.ochaya
 cd ~/.ochaya
-./setup.sh
+./links.sh
 ```
 
