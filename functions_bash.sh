@@ -382,6 +382,7 @@ function uwu() {
 }
 
 function clip() {
-	cat $@ | xclip -selection c -r
+	cat "$@" | xclip -selection clipboard
+	# cat "$@" | xclip -selection clipboard -loops 1
 }
 
