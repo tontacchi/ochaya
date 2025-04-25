@@ -21,7 +21,7 @@ alias knockknock="ping 192.168.1.226";
 alias lfs="ls --human-readable --size -1 -S --classify";
 
 # Trick 2: Find command in bash history
-alias gh="history | grep"
+# alias gh="history | grep"
 
 alias myip="curl http://ipecho.net/plain; echo";
 
