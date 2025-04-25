@@ -382,7 +382,17 @@ function uwu() {
 }
 
 function clip() {
-	cat "$@" | xclip -selection clipboard
+	cat "$@" | xclip -selection c -r
 	# cat "$@" | xclip -selection clipboard -loops 1
 }
 
+function graph() {
+	# Usage: graph [commit_count]	
+	# - defaults to showing all commits
+	local commit_count=$1
+	if [[ -z $commit_count ]]; then
+		git log --graph --oneline --all
+	else
+		git log --graph --oneline --all -n ${commit_count}
+	fi
+}
