@@ -80,6 +80,10 @@ function vnv() {
 	source ./venv/bin/activate
 }
 
+function dvnv() {
+	deactivate
+}
+
 # Kotlin
 function kc() {
 	"/home/andy/Downloads/kotlinc/bin/kotlinc"
