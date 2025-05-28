@@ -28,6 +28,7 @@ local curr_telescope_border_fg = vim.api.nvim_get_hl(0, { name = "TelescopeBorde
 vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none", fg = curr_telescope_border_fg })
 
 -- floating window borders
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#89b4fa", bg = "none" })
 
 -- Noice Command Line borders

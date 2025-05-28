@@ -14,9 +14,12 @@ local function onAttach(client, bufnr)
 end
 
 local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",  -- other options: "single", "double", "shadow", or a custom table
-  }),
+  ["textDocument/hover"] = vim.lsp.with(
+	vim.lsp.handlers.hover,
+	{
+	  border = "rounded",  -- other options: "single", "double", "shadow", or a custom table
+	}
+  ),
 }
 
 local nvimLspConfigTable = {
@@ -40,12 +43,16 @@ local nvimLspConfigTable = {
 	local servers = {
 	  lspconf.lua_ls,
 	  lspconf.pyright,
+	  lspconf.gopls,
 	  -- lspconf.pylsp,
 	  -- lspconf.kotlin_language_server,
 	}
 
 	for _, server in ipairs(servers) do
-	  server.setup({ on_attach = onAttach })
+	  server.setup({
+		on_attach = onAttach,
+		handlers = handlers,
+	  })
 	end
   end
 }
