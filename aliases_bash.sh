@@ -1,3 +1,24 @@
+# lmao
+alias please="sudo"
+alias fucking="sudo"
+
+# git shortcuts
+alias gd="git diff"
+
+alias gs="git status"
+alias ga="git add"
+alias gco="git commit"
+
+alias gf="git fetch"
+alias gp="git push"
+alias gu="git pull"
+
+alias gl="git log"
+alias gb="git branch"
+
+alias gi="git init"
+alias gcl="git clone"
+
 # quick ls variations
 alias lf="ls -F";
 alias ll="ls -lh";
@@ -7,10 +28,6 @@ alias lwaf="lw -aFw 70";
 
 alias ..="cd ..";
 alias fhere="find . -name";
-
-# fast cd w/ fzf
-#alias sd="cd ~ && cd \$(find * -type d | fzf)";
-#alias hd="cd ~ && cd \$(find . -type d | fzf)";
 
 alias :q="exit"
 
@@ -32,11 +49,12 @@ alias myip="curl http://ipecho.net/plain; echo";
 alias ics="ssh aatontha@circinus-60.ics.uci.edu"
 
 # print newline after any command executes
-PROMPT_COMMAND="export PROMPT_COMMAND=echo";
-alias clear="unset PROMPT_COMMAND; clear; PROMPT_COMMAND='export PROMPT_COMMAND=echo';";
-alias clear_print="unset PROMPT_COMMAND; clear; PROMPT_COMMAND='export PROMPT_COMMAND=echo';";
+# PROMPT_COMMAND="export PROMPT_COMMAND=echo";
+# alias clear="unset PROMPT_COMMAND; clear; PROMPT_COMMAND='export PROMPT_COMMAND=echo';";
+# alias clear_print="unset PROMPT_COMMAND; clear; PROMPT_COMMAND='export PROMPT_COMMAND=echo';";
 
 # try: keep terminal color scheme for tmux
 alias tmux="TERM=screen-256color-bce tmux"
 
+# yt-dlp
 alias yt-dlp="~/.local/bin/yt-dlp"
