@@ -191,49 +191,6 @@
 	}
 }
 
-
-/* make navbar disappear until hovered over (or new hover area is hovered) */
-#navigator-toolbox {
-  position: relative !important;
-}
-
-#navigator-toolbox::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 30px;
-  pointer-events: auto;
-  z-index: 2; /* low enough not to cover nav/tabs */
-  background-color: transparent; /* ensure it's fully invisible */
-}
-#navigator-toolbox:hover > #nav-bar,
-#urlbar[focused="true"],
-#nav-bar:focus-within,
-#nav-bar:hover {
-  opacity: 1 !important;
-  margin-top: 0 !important;
-  pointer-events: auto !important;
-}
-
-#nav-bar {
-  opacity: 0 !important;
-  margin-top: -42px !important;
-  pointer-events: none !important;
-  transition: opacity 0.3s ease, margin-top 0.3s ease !important;
-  visibility: visible !important;
-}
-
-#navigator-toolbox {
-  min-height: 1px !important;
-}
-
-#navigator-toolbox::before {
-  /*background-color: rgba(255, 0, 0, 0.3); /* REMOVE after testing */*/
-  background: none; /* REMOVE after testing */
-}
-
 /*!--[ navbar ]---------------------------------------------------------------*/
 
 
