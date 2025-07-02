@@ -58,3 +58,4 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 # yt-dlp
 alias yt-dlp="~/.local/bin/yt-dlp"
+

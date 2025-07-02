@@ -89,6 +89,7 @@ function sd()
 
 	# go to selected directory & print the path
     cd "$target_dir"
+<<<<<<< Updated upstream
 
 	# [JumpList]
 	mark
@@ -97,6 +98,14 @@ function sd()
 	# [Starship]
 	# local outputDir=$(pwd | sed "s|^$HOME|~|")
     # echo -e "\e[0;36m$outputDir\033[0m"
+=======
+	# mark
+
+    clear
+	# [starship]
+	# local outputDir=$(pwd | sed "s|^$HOME|~|")
+	# echo -e "\e[0;36m$outputDir\033[0m"
+>>>>>>> Stashed changes
 }
 
 function hd()
@@ -113,12 +122,19 @@ function hd()
     fi
 
     cd "$dir"
+<<<<<<< Updated upstream
 
 	# [JumpList]
 	mark
 
     clear
 	# [Starship]
+=======
+	# mark
+
+    clear
+	# [starship]
+>>>>>>> Stashed changes
     # local outputDir=$(pwd | sed "s|^$HOME|~|")
     # echo -e "\e[0;36m$outputDir\033[0m"
 }
@@ -296,6 +312,12 @@ function hf() {
 
 #---[ File System & fzf ]-------------------------------------------------------
 
+#---[ Obsidian ]----------------------------------------------------------------
+function oo() {
+	local vault_dir="$HOME/pfiles/vaults/Vault/01-Notes/"
+	nvim "$vault_dir"
+}
+#---[ Obsidian ]----------------------------------------------------------------
 
 #---[ recycle bin ]-------------------------------------------------------------
 # dump .recycle/
@@ -336,7 +358,11 @@ function path() {
 # clear screen & print current path
 function c() {
 	clear
+<<<<<<< Updated upstream
 	# [ starship ]
+=======
+	# [starship]
+>>>>>>> Stashed changes
     # local outputDir=$(pwd | sed "s|^$HOME|~|")
     # echo -e "\e[0;36m$outputDir\033[0m"
 }
