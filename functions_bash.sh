@@ -7,6 +7,15 @@ JUMP_INDEX=1
 #---[ Global Variables ]--------------------------------------------------------
 
 
+# thanks kelsey
+function go() {
+	if [[ "$1" == "fuck" && "$2" == "yourself" ]]; then
+		command go build
+	else
+		command go "$@"
+	fi
+}
+
 #---[ Vitals ]------------------------------------------------------------------
 # DEPRECATED: symlink $HOME/${DOTDIR}/functions.sh -> $HOME/.bash_functions
 # writes this file -> .bash_functions
@@ -80,10 +89,12 @@ function sd()
 
 	# go to selected directory & print the path
     cd "$target_dir"
-	# mark
+
+	# [JumpList]
+	mark
 
     clear
-	# [starship]
+	# [Starship]
 	# local outputDir=$(pwd | sed "s|^$HOME|~|")
     # echo -e "\e[0;36m$outputDir\033[0m"
 }
@@ -102,10 +113,12 @@ function hd()
     fi
 
     cd "$dir"
-	# mark
+
+	# [JumpList]
+	mark
 
     clear
-	# [starship]
+	# [Starship]
     # local outputDir=$(pwd | sed "s|^$HOME|~|")
     # echo -e "\e[0;36m$outputDir\033[0m"
 }
@@ -343,6 +356,10 @@ function uwu_senpai_pweez() {
 # because <tab> is 1 keystroke too many
 function uwu() {
 	uwu_senpai_pweez $@
+}
+
+function nuzzles() {
+	echo "uwu nuzzles you uwu"
 }
 
 function clip() {
