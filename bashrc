@@ -156,7 +156,11 @@ export PATH="$PATH:$HOME/go/bin"
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # starship
+=======
+# [starship]
+>>>>>>> Stashed changes
 =======
 # [starship]
 >>>>>>> Stashed changes

@@ -90,6 +90,7 @@ function sd()
 	# go to selected directory & print the path
     cd "$target_dir"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 	# [JumpList]
 	mark
@@ -98,6 +99,14 @@ function sd()
 	# [Starship]
 	# local outputDir=$(pwd | sed "s|^$HOME|~|")
     # echo -e "\e[0;36m$outputDir\033[0m"
+=======
+	# mark
+
+    clear
+	# [starship]
+	# local outputDir=$(pwd | sed "s|^$HOME|~|")
+	# echo -e "\e[0;36m$outputDir\033[0m"
+>>>>>>> Stashed changes
 =======
 	# mark
 
@@ -123,12 +132,19 @@ function hd()
 
     cd "$dir"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 	# [JumpList]
 	mark
 
     clear
 	# [Starship]
+=======
+	# mark
+
+    clear
+	# [starship]
+>>>>>>> Stashed changes
 =======
 	# mark
 
@@ -359,7 +375,11 @@ function path() {
 function c() {
 	clear
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	# [ starship ]
+=======
+	# [starship]
+>>>>>>> Stashed changes
 =======
 	# [starship]
 >>>>>>> Stashed changes
