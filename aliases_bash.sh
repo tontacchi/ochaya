@@ -7,11 +7,11 @@ alias gd="git diff"
 
 alias gs="git status"
 alias ga="git add"
-alias gco="git commit"
+alias gc="git commit"
 
 alias gf="git fetch"
 alias gp="git push"
-alias gu="git pull"
+alias gpu="git pull"
 
 alias gl="git log"
 alias gb="git branch"
