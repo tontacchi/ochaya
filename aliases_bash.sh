@@ -49,9 +49,11 @@ alias lwaf="lw -aFw 70";
 #―――[ ls Variations ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
 alias ..="cd ..";
-alias fhere="find . -name";
 
 alias :q="exit"
+alias q="exit"
+
+alias fhere="find . -name";
 
 # sector 0's local ip
 alias localhost="ping 192.168.1.226";
