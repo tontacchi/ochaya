@@ -74,6 +74,9 @@ vim.keymap.set("x", "<space>p", "\"_dP")
 -- substitute / replace all instances of word under cursor
 vim.keymap.set("n", "<space>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- TODO: fix to somehow grab the word under the cursor
+vim.keymap.set("v", "<space>ra",  [[:s/\<\>//gI<Left><Left><Left><Left><Left><Left>]])
+
 -- next and previous command completion handled in line with vim motions
 vim.keymap.set("c", "<c-j>", "<c-n>")
 vim.keymap.set("c", "<c-k>", "<c-p>")
