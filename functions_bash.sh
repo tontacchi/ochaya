@@ -287,7 +287,9 @@ function hf() {
     local original_dir="$PWD"
     cd ~ || return
 
-    local selected_file=$(find . -type f -not -path '*/venv/*' | fzf)
+    # local selected_file=$(find . -type f -not -path '*/venv/*' | fzf)
+    local selected_file="$(find . -type f -not -path '*/venv/*' | ${FZF_CMD[@]})"
+
     if [[ -n "$selected_file" ]]; then
         local target_dir=$(dirname "$selected_file")  # Get the directory containing the selected file
 
