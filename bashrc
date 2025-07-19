@@ -1,6 +1,13 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 
+# Adds existing, unique paths
+add_paths() {
+	for d in "$@"; do
+		[[ -d "$d" && ! "$PATH" =~ (^|:)$d(:|$) ]] && PATH="$PATH:$d"
+	done
+}
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -146,11 +153,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:/opt/nvim-linux64/bin"
+add_paths /usr/local/go/bin /opt/nvim-linux64/bin $HOME/launchers
+add_paths $HOME/go/bin
+
+# export PATH="$PATH:/usr/local/go/bin"
+# export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # DELETE: only for bootdev's CLI tool. delete when done
-export PATH="$PATH:$HOME/go/bin"
+# export PATH="$PATH:$HOME/go/bin"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
