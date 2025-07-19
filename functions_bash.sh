@@ -1,5 +1,9 @@
 #---[ Global Variables ]--------------------------------------------------------
-fzf_cmd="fzf --height=50% --layout=reverse --border=rounded --margin=3% --color=dark"
+FZF_CMD="fzf
+--height=50%
+--layout=reverse
+--border=rounded
+--margin=3%"
 
 # used for mark() & jump()
 JUMP_LIST=($HOME)
@@ -9,11 +13,24 @@ JUMP_INDEX=1
 
 # thanks kelsey
 function go() {
+	# usage: go fuck yourself -> go build
+	# - anything else -> normal go command
+	
 	if [[ "$1" == "fuck" && "$2" == "yourself" ]]; then
 		command go build
 	else
 		command go "$@"
 	fi
+}
+
+
+# takes a username & logs them out whoops
+function bye() {
+	sudo pkill -KILL -u $1
+}
+
+function off() {
+	sudo shutdown -h now
 }
 
 #---[ Vitals ]------------------------------------------------------------------
@@ -23,7 +40,7 @@ function go() {
 # 	cp ~/.functions.sh ~/.bash_functions
 # }
 
-function confignvim() {
+function nvimconfig() {
 	local nvim_config_path="$HOME/.config/nvim"
 	(cd "${nvim_config_path}" && nvim .)
 }
@@ -78,7 +95,7 @@ function sd()
 	# look for target from home directory
 	cd ~
     # local dir=$(find * -type d -not -path '*/venv/*' | fzf)
-	local target_dir="$(fdfind . --type d | ${fzf_cmd})"
+	local target_dir="$(fdfind . --type d | ${FZF_CMD[@]})"
 
 	# Esc out of fzf -> return to starting directory & abort
     if [ -z "$target_dir" ]; then
@@ -104,7 +121,7 @@ function hd()
     local originalDir=$(pwd)
 	cd ~
     # local dir=$(find . -type d -not -path '*/venv/*' | fzf)
-	local dir="$(fdfind -H -t d | ${fzf_cmd})"
+	local dir="$(fdfind -H -t d | ${FZF_CMD[@]})"
 
     if [ -z "$dir" ]; then
         echo "No directory selected. Aborting."
@@ -124,7 +141,7 @@ function mf()
 	cd ~ || return 1
 
 	# local FILE=$(find . -type f -not -path '*/venv/*' | fzf)
-	local FILE="$(fdfind -t f | ${fzf_cmd})"
+	local FILE="$(fdfind -t f | ${FZF_CMD[@]})"
 	if [ -z "$FILE" ]; then
         echo "No file selected. Aborting."
         cd "$ORIGINAL_DIR" || return 1
@@ -132,7 +149,7 @@ function mf()
     fi
 
     # local DEST=$(find . -type d -not -path '*/venv/*' | fzf)
-	local DEST="$(fdfind -t d | ${fzf_cmd})"
+	local DEST="$(fdfind -t d | ${FZF_CMD[@]})"
     if [ -z "$DEST" ]; then
         echo "No destination selected. Aborting."
         cd "$ORIGINAL_DIR" || return 1
@@ -246,7 +263,7 @@ function ff() {
     cd ~ || return
 
     # local selected_file=$(find * -type f -not -path '*/venv/*' | fzf)
-	local selected_file="$(fdfind . --type f | ${fzf_cmd})"
+	local selected_file="$(fdfind . --type f | ${FZF_CMD[@]})"
     if [[ -n "$selected_file" ]]; then
         local target_dir=$(dirname "$selected_file")  # Get the directory containing the selected file
 
@@ -309,6 +326,16 @@ function recycle() {
 
 #---[ recycle bin ]-------------------------------------------------------------
 
+
+#---[ $PATH ]-------------------------------------------------------------------
+# nicer output for echo $PATH
+function path() {
+	echo "${PATH//:/$'\n'}" | uniq -u | sort | nl
+}
+
+#---[ $PATH ]-------------------------------------------------------------------
+
+
 # mkdir + cd into it
 function mkd() {
 	mkdir -pv "$@"
@@ -326,11 +353,6 @@ function greph() {
 	fi
 
 	history | grep -vE "(gh|ghr)" | grep --color=always "$1" | tail -n "${count}"
-}
-
-# nicer output for echo $PATH
-function path() {
-	echo "${PATH//:/$'\n'}" | uniq -u | sort | nl
 }
 
 # clear screen & print current path
