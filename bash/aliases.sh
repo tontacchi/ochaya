@@ -1,13 +1,20 @@
 #―――[ Common Directories ]――――――――――――――――――――――――――――――――――――――――――――――――――――――
-alias res="cd $HOME/pfiles/workspace/local/res"
-alias monk="cd $HOME/pfiles/workspace/github.com/tontacchi/monkey"
-alias crawl="cd $HOME/pfiles/workspace/github.com/tontacchi/crawler"
+dots="$HOME/.ochaya"
+conf="$HOME/.config"
+work="$HOME/pfiles/workspace"
 
-alias github="cd $HOME/pfiles/workspace/github.com"
+alias res="cd $work/local/res"
+alias monk="cd $work/github.com/tontacchi/monkey"
+alias engine="cd $work/github.com/tontacchi/search"
+
+alias github="cd $work/github.com"
 alias theory="cd $HOME/pfiles/books/textbooks/CS-Theory/"
 
-alias i3conf="cd $HOME/.config/i3"
-alias picomconf="cd $HOME/.config/picom"
+alias i3c="cd $dots/i3"
+alias picomc="cd $dots/picom"
+alias polybarc="cd $dots/polybar"
+alias dunstc="cd $dots/dunst"
+alias rofic="cd $dots/rofi"
 
 #―――[ Common Directories ]――――――――――――――――――――――――――――――――――――――――――――――――――――――
 

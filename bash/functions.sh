@@ -29,6 +29,10 @@ function bye() {
 	sudo pkill -KILL -u $1
 }
 
+logout() {
+	sudo pkill -KILL -u $USER
+}
+
 function off() {
 	sudo shutdown -h now
 }
