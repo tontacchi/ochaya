@@ -1,0 +1,42 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Custom Format
+# format = '''
+# [┌](bold green) $path$all$character'''
+# format = '''
+# # 🧬╭╼━━━━━━━\[ 🌐 𝙷𝚈𝙿𝙴𝚁𝙿𝚁𝙾𝙼𝙿𝚃 | 🧿 SYS: ALPHA-9 | ⏚ LINK: STABLE \]━━━━━━━━╾╮
+# # ⚙️ │ $username$directory$git_branch
+# # ⚗️ │ $package$rust$golang$nodejs$python
+# # 🚀╰╼≻ 
+# # '''
+# format = """\
+# 🌸[╭───≽【](#FF69B4) ✨ [𝕄𝔸𝔾𝕀ℂ𝔸𝕃 𝔾𝕀ℝ𝕃 𝕋𝔼ℝ𝕄𝕀ℕ𝔸𝕃](#FF69B4) ✨ [| 🌈 LINK: STABLE |](#B19CD9) 🧁 [SYSTEM: KAWAII-9 】≼───╮](#FF69B4)
+# 🦊[│](#FF69B4) 💖 USER: $username   📁 Fowder: $directory   🌱 Bwanchie: $git_branch
+# 🍰[│](#B19CD9) 📦 Pwoject: $package   󰊢 Gowang: $golang    Nodey: $nodejs   🐍 Pywython: $python
+# 💫[╰──≻](#B19CD9) 
+# """
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Directory name
+[directory]
+# style = "bold green"
+# format = "  [$path]($style) "
+format = "[$path]($style) "
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[❯](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+# language settings
+[golang]
+# symbol = ""
+# symbol = "🍑💨"
+# format = 'via [$symbol $version](bold cyan) '
+format = '[$symbol $version](bold cyan) '
