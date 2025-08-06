@@ -25,7 +25,7 @@ add_newline = true
 # Directory name
 [directory]
 # style = "bold green"
-# format = "  [$path]($style) "
+# format = " [$path]($style) "
 format = "[$path]($style) "
 
 # Replace the '❯' symbol in the prompt with '➜'
@@ -41,4 +41,4 @@ disabled = true
 # symbol = ""
 # symbol = "🍑💨"
 # format = 'via [$symbol $version](bold cyan) '
-format = '[$symbol $version](bold cyan) '
+format = '[$symbol$version](bold cyan) '
