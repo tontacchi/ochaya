@@ -41,7 +41,14 @@
     progress_bar_corner_radius = 0
 
 # icons
-	icon_position = off
+	# icon_position = off
+	enable_recursive_icon_lookup = true
+    icon_position = left
+    min_icon_size = 24
+    max_icon_size = 48
+    icon_theme = "Adwaita"
+    icon_corner_radius = 5
+    text_icon_padding = 0
 
 # actions
 	# shrink = no
