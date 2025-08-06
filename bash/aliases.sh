@@ -11,7 +11,7 @@ alias monk="cd $work/github.com/tontacchi/monkey"
 alias engine="cd $work/github.com/tontacchi/search"
 
 alias github="cd $work/github.com"
-alias theory="cd $HOME/pfiles/books/textbooks/CS-Theory/"
+alias theory="open $HOME/pfiles/books/textbooks/CS-Theory/ &"
 
 alias i3c="cd $dots/i3"
 alias picomc="cd $dots/picom"
