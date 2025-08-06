@@ -3,6 +3,9 @@ dots="$HOME/.ochaya"
 conf="$HOME/.config"
 work="$HOME/pfiles/workspace"
 
+alias dots="cd $dots"
+alias conf="cd $conf"
+
 alias res="cd $work/local/res"
 alias monk="cd $work/github.com/tontacchi/monkey"
 alias engine="cd $work/github.com/tontacchi/search"
@@ -18,6 +21,10 @@ alias rofic="cd $dots/rofi"
 
 #―――[ Common Directories ]――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
+#―――[ sudo Prompt ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+alias sudo="sudo -A"
+
+#―――[ bash Prompt ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
 #―――[ Silly ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 # lmao thanks reddit

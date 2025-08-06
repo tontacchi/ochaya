@@ -165,6 +165,8 @@ add_paths $HOME/go/bin
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-
 # [starship]
 eval "$(starship init bash)"
+
+# [rofi]
+export SUDO_ASKPASS="$HOME/.ochaya/rofi/askpass.sh"
