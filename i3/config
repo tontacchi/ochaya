@@ -68,8 +68,12 @@ bindsym Mod4+3       exec --no-startup-id ~/launchers/vesktop
 bindsym Mod4+4       exec --no-startup-id ~/launchers/obsidian.sh
 
 bindsym Mod1+Shift+f exec --no-startup-id thunar
+bindsym Mod1+n       exec --no-startup-id cinnamon-settings network
 
 bindsym Ctrl+Shift+s exec gnome-screenshot --area
+
+bindsym Mod1+x       exec --no-startup-id ~/.config/i3/i3lock.sh
+bindsym Mod4+v       exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 #―――[ Applications ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
@@ -250,6 +254,8 @@ exec polybar
 exec --no-startup-id picom
 exec --no-startup-id feh --bg-scale ~/pfiles/images/wallpapers/ganyu-keqing.jpg
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+exec greenclip daemon
 
 #―――[ Setup Other Apps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――
 

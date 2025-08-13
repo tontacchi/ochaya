@@ -361,15 +361,6 @@ function greph() {
 	history | grep -vE "(gh|ghr)" | grep --color=always "$1" | tail -n "${count}"
 }
 
-# clear screen & print current path
-function c() {
-	clear
-
-	# [ starship ]
-    # local outputDir=$(pwd | sed "s|^$HOME|~|")
-    # echo -e "\e[0;36m$outputDir\033[0m"
-}
-
 # i am a self-respecting, functional adult
 function uwu_senpai_pweez() {
 	local file="$1"
