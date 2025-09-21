@@ -39,7 +39,7 @@
 
 #window {
     width: 380px;
-    y-offset: -8%;
+    y-offset: 0%;
     padding: 30px;
 
     /* border-color: #333333; */

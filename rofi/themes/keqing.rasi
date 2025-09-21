@@ -2,25 +2,16 @@
 /* Author: Newman Sanchez (https://github.com/newmanls) */
 
 * {
-    font: "Hack Nerd Font Mono Medium 12";
-
-    /* bg0: #2E3440;*/
-    /* bg1: #3B4252;*/
-    /* fg0: #D8DEE9;*/
-
-    /* accent-color: #88C0D0;*/
-    /* urgent-color: #EBCB8B;*/
-
 	bg0: #1A132F;
 	bg1: #2A1B45;
-
 	fg0: #D9D1E5;
 
 	accent-color: #8E7CC3;
 	urgent-color: #E09EFF;
 
-    background-color: transparent;
+    font: "Hack Nerd Font Mono Medium 12";
 
+    background-color: transparent;
 	text-color: @fg0;
 
     margin:  0;
@@ -39,9 +30,9 @@ window {
 
 inputbar {
     spacing: 8px;
-    padding: 8px;
+    padding: 15 12 15 12;
 
-    background-color:   @bg1;
+    background-color: @bg1;
 }
 
 prompt, entry, element-icon, element-text {
@@ -53,21 +44,21 @@ prompt {
 }
 
 textbox {
-    padding:            8px;
-    background-color:   @bg1;
+    padding: 8px;
+    background-color: @bg1;
 }
 
 listview {
-    padding:    4px 0;
-    lines:      8;
-    columns:    1;
+    padding: 0;
+    columns: 1;
+	lines: 8;
 
-    fixed-height:   false;
+    fixed-height: false;
 }
 
 element {
-    padding:    8px;
-    spacing:    8px;
+    spacing: 8px;
+	padding: 12;
 }
 
 element normal normal {
@@ -91,15 +82,15 @@ element selected {
 }
 
 element selected normal, element selected active {
-    background-color:   @accent-color;
+    background-color: @accent-color;
 }
 
 element selected urgent {
-    background-color:   @urgent-color;
+    background-color: @urgent-color;
 }
 
 element-icon {
-    size:   0.8em;
+    size: 0.8em;
 }
 
 element-text {

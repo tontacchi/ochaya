@@ -7,4 +7,5 @@ local cmp_nvim_lsp_table = {
   }
 }
 
+-- return {}
 return cmp_nvim_lsp_table

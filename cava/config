@@ -1,0 +1,25 @@
+[general]
+framerate = 60
+sensitivity = 25
+
+[output]
+# stereo (default) → left + right channels mirrored
+channels = mono
+mono_option = average
+
+[color]
+method=gradient
+
+# Gradient mode
+# - interpolates between the colors specified below
+gradient = 1
+gradient_count=6
+
+# Keqing-inspired purple palette
+# - light lavender → mid purple → amethyst → deep violet
+gradient_color_1 = '#D6B3FF'  # soft lavender
+gradient_color_2 = '#B388FF'  # lilac
+gradient_color_3 = '#9966FF'  # mid purple
+gradient_color_4 = '#7A42FF'  # bright amethyst
+gradient_color_5 = '#5C2EB8'  # deep violet
+gradient_color_6 = '#3B1C80'  # royal indigo

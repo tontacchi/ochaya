@@ -34,9 +34,13 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Use super + -/+ to adjust brightness w/ brightnessctl
+# incremental brightness adjustment
 bindsym Mod4+minus exec --no-startup-id sudo brightnessctl set 5%-
 bindsym Mod4+equal exec --no-startup-id sudo brightnessctl set +5%
+
+# set brightness positions
+bindsym Mod4+Shift+underscore exec --no-startup-id sudo brightnessctl set 10%
+bindsym Mod4+Shift+plus       exec --no-startup-id sudo brightnessctl set 50%
 
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
@@ -49,8 +53,8 @@ bindsym Mod1+Shift+q kill
 
 #―――[ Program Launcher ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 # Modern dmenu replacement
-bindsym Mod1+d exec "rofi -modi drun,run -show drun"
-# bindsym Mod1+d exec "$HOME/.config/rofi/scripts/launcher_t2"
+# bindsym Mod1+d exec rofi -show drun -modi drun,run -display-drun "hi"
+bindsym Mod1+d exec rofi -show drun -display-drun "❯_"
 
 # bindsym Mod1+d exec --no-startup-id dmenu_run
 
@@ -64,8 +68,8 @@ bindsym Mod1+d exec "rofi -modi drun,run -show drun"
 #―――[ Applications ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 bindsym Mod4+1       exec --no-startup-id firefox
 bindsym Mod4+Shift+1 exec --no-startup-id firefox --private-window
-bindsym Mod4+3       exec --no-startup-id ~/launchers/vesktop
-bindsym Mod4+4       exec --no-startup-id ~/launchers/obsidian.sh
+bindsym Mod4+3       exec --no-startup-id ~/.local/bin/vesktop
+bindsym Mod4+4       exec --no-startup-id ~/.local/bin/obsidian
 
 bindsym Mod1+Shift+f exec --no-startup-id thunar
 bindsym Mod1+n       exec --no-startup-id cinnamon-settings network
@@ -137,16 +141,16 @@ bindsym Mod1+minus scratchpad show
 
 #―――[ Workspaces ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 # Workspace Names
-set $ws1 一
-set $ws2 二
-set $ws3 三
-set $ws4 四
-set $ws5 五
-set $ws6 六
-set $ws7 七
-set $ws8 八
-set $ws9 九
-set $ws10 十
+set $ws1 "1: 一"
+set $ws2 "2: 二"
+set $ws3 "3: 三"
+set $ws4 "4: 四"
+set $ws5 "5: 五"
+set $ws6 "6: 六"
+set $ws7 "7: 七"
+set $ws8 "8: 八"
+set $ws9 "9: 九"
+set $ws10 "10: 十"
 
 # Change to workspace by name
 bindsym Mod1+1 workspace $ws1
@@ -252,10 +256,11 @@ gaps inner 15
 #―――[ Setup Other Apps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――
 exec polybar
 exec --no-startup-id picom
-exec --no-startup-id feh --bg-scale ~/pfiles/images/wallpapers/ganyu-keqing.jpg
+# exec --no-startup-id feh --bg-scale ~/pfiles/images/wallpapers/ganyu-keqing.jpg
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec diodon &
 
-exec greenclip daemon
+# exec greenclip daemon
 
 #―――[ Setup Other Apps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――
 

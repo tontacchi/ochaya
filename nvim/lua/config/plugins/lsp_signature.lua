@@ -12,4 +12,5 @@ local lsp_signature_table = {
   end
 }
 
+-- return {}
 return lsp_signature_table

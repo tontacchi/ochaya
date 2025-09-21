@@ -25,6 +25,9 @@ local telescopeTable = {
 			"%.pickle",
 			"requirements.txt",
 
+			-- node modules
+			"node_modules",
+
 			-- git directories
 			".git/",
 
@@ -85,4 +88,5 @@ local telescopeTable = {
   }
 }
 
+-- return {}
 return telescopeTable

@@ -24,8 +24,10 @@ safe_link() {
 # safe_link "${dots}/picom"   "${conf}/picom"
 # safe_link "${dots}/polybar" "${conf}/polybar"
 # safe_link "${dots}/rofi"    "${conf}/rofi"
-safe_link "${dots}/dunst"   "${conf}/dunst"
-safe_link "${dots}/neofetch/"              "${conf}/neofetch"
-safe_link "${dots}/starship/starship.toml" "${conf}/starship.toml"
+# safe_link "${dots}/dunst"   "${conf}/dunst"
+# safe_link "${dots}/neofetch/"              "${conf}/neofetch"
+# safe_link "${dots}/starship/starship.toml" "${conf}/starship.toml"
+safe_link "${dots}/cava" "${conf}/cava"
+safe_link "${dots}/fzf"  "${conf}/fzf"
 
 echo "Symlinks updated to point to ~/${dots}"

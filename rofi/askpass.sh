@@ -1,5 +1,5 @@
 #!/bin/bash
-rofi -dmenu\
+printf '' | rofi -dmenu\
 	-password\
 	-i\
 	-no-fixed-num-lines\

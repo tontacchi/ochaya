@@ -1,44 +1,93 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Custom Format
-format = '''
-[┌](bold green) $path$all$character'''
-
+# # Custom Format
 # format = '''
-# # 🧬╭╼━━━━━━━\[ 🌐 𝙷𝚈𝙿𝙴𝚁𝙿𝚁𝙾𝙼𝙿𝚃 | 🧿 SYS: ALPHA-9 | ⏚ LINK: STABLE \]━━━━━━━━╾╮
-# # ⚙️ │ $username$directory$git_branch
-# # ⚗️ │ $package$rust$golang$nodejs$python
-# # 🚀╰╼≻ 
-# # '''
+# [┌](bold green) $path$all$character'''
+#
+#
+# # Inserts a blank line between shell prompts
+# add_newline = true
+#
+# command_timeout = 5000 # Example: 5 seconds
+#
+# [directory]
+# format = "[$path]($style) "
+# read_only = " 󰌾"
+#
+#
+# [character]
+# # Replace the '❯' symbol in the prompt with '➜'
+# success_symbol = '[❯](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+#
+#
+# [package]
+# # Disable the package module, hiding it from the prompt completely
+# disabled = true
+# symbol = "󰏗 "
 
-# format = """\
-# 🌸[╭───≽【](#FF69B4) ✨ [𝕄𝔸𝔾𝕀ℂ𝔸𝕃 𝔾𝕀ℝ𝕃 𝕋𝔼ℝ𝕄𝕀ℕ𝔸𝕃](#FF69B4) ✨ [| 🌈 LINK: STABLE |](#B19CD9) 🧁 [SYSTEM: KAWAII-9 】≼───╮](#FF69B4)
-# 🦊[│](#FF69B4) 💖 USER: $username   📁 Fowder: $directory   🌱 Bwanchie: $git_branch
-# 🍰[│](#B19CD9) 📦 Pwoject: $package   󰊢 Gowang: $golang    Nodey: $nodejs   🐍 Pywython: $python
-# 💫[╰──≻](#B19CD9) 
-# """
 
-# Inserts a blank line between shell prompts
-add_newline = true
+format = """
+[░▒▓](#a3aed2)\
+[ 󰣭 ](bg:#a3aed2 fg:#090c0c)\
+[](bg:#769ff0 fg:#a3aed2)\
+$directory\
+[](fg:#769ff0 bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#394260 bg:#212736)\
+$nodejs\
+$rust\
+$golang\
+$php\
+[](fg:#212736 bg:#1d2230)\
+$time\
+[ ](fg:#1d2230)\
+\n$character"""
 
-# Directory name
 [directory]
-# style = "bold green"
-# format = " [$path]($style) "
-format = "[$path]($style) "
+style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
-# Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
-success_symbol = '[❯](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
+[git_branch]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
-# language settings
+[git_status]
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
 [golang]
-# symbol = ""
-# symbol = "🍑💨"
-# format = 'via [$symbol $version](bold cyan) '
-format = '[$symbol$version](bold cyan) '
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'

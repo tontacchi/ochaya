@@ -55,18 +55,7 @@ vim.api.nvim_set_hl(0, "FoldColumn", { bg = "none", fg = "#aaaaaa" }) -- For the
 -- set characters after line fold as blank
 vim.opt.fillchars:append({ fold = " " })
 
-
----[ Lua Appearance w/ Treesitter ]-----------------------------------------------------------
 vim.api.nvim_set_hl(0, "@boolean.lua", { bold = false, fg = "#FA9C2B" })
-
----[ Lua Appearance w/ Treesitter ]-----------------------------------------------------------
-
----[ Python Appearance w/ Treesitter ]--------------------------------------------------------
 vim.api.nvim_set_hl(0, "@boolean.python", { bold = false, fg = "#FA9C2B" })
-
----[ Python Appearance w/ Treesitter ]--------------------------------------------------------
-
----[ Kotlin Appearance w/ Treesitter ]--------------------------------------------------------
 vim.api.nvim_set_hl(0, "@boolean.kotlin", { bold = false, fg = "#FA9C2B" })
 
----[ Kotlin Appearance w/ Treesitter ]--------------------------------------------------------

@@ -26,4 +26,5 @@ local nvim_cmp_table = {
   end
 }
 
+-- return {}
 return nvim_cmp_table

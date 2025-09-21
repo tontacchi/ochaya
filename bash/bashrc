@@ -17,6 +17,7 @@ esac
 # Don't put duplicate lines / lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
+HISTIGNORE="history*:ls*:cd*:..:dots:conf:tontacchi*:github:dev:c:exit:q:bye*:logout:off:graph:gs:ga*:gc*:gp*:gpu*"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -155,6 +156,7 @@ export NVM_DIR="$HOME/.nvm"
 
 add_paths /usr/local/go/bin /opt/nvim-linux64/bin $HOME/launchers
 add_paths $HOME/go/bin
+add_paths $HOME/.config/lynx
 
 # export PATH="$PATH:/usr/local/go/bin"
 # export PATH="$PATH:/opt/nvim-linux64/bin"
@@ -166,7 +168,12 @@ add_paths $HOME/go/bin
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # [starship]
+export STARSHIP_CONFIG=${HOME}/.config/starship.toml
 eval "$(starship init bash)"
 
 # [rofi]
 export SUDO_ASKPASS="$HOME/.ochaya/rofi/askpass.sh"
+
+# [fzf]
+export FZF_DEFAULT_OPTS="$(cat ~/.config/fzf/fzf.conf)"
+

@@ -37,4 +37,5 @@ local luasnipTable = {
   },
 };
 
-return luasnipTable;
+return {}
+-- return luasnipTable;

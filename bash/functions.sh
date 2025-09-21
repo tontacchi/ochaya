@@ -12,7 +12,7 @@ JUMP_INDEX=1
 
 
 # thanks kelsey
-function go() {
+go() {
 	# usage: go fuck yourself -> go build
 	# - anything else -> normal go command
 	
@@ -25,7 +25,7 @@ function go() {
 
 
 # takes a username & logs them out whoops
-function bye() {
+bye() {
 	sudo pkill -KILL -u $1
 }
 
@@ -33,66 +33,58 @@ logout() {
 	sudo pkill -KILL -u $USER
 }
 
-function off() {
+off() {
 	sudo shutdown -h now
 }
 
-#---[ Vitals ]------------------------------------------------------------------
-# DEPRECATED: symlink $HOME/${DOTDIR}/functions.sh -> $HOME/.bash_functions
-# writes this file -> .bash_functions
-# function bashfunc() {
-# 	cp ~/.functions.sh ~/.bash_functions
-# }
 
-function nvimconfig() {
+nvimc() {
 	local nvim_config_path="$HOME/.config/nvim"
 	(cd "${nvim_config_path}" && nvim .)
 }
 
-#---[ Vitals ]------------------------------------------------------------------
 
-
-#---[ Source Code Manipulation ]------------------------------------------------
-# Python 3
-function py() {
+#---[ Python ]------------------------------------------------------------------
+py() {
 	python3 "$@"
 }
 
-function mkvnv() {
+mkvnv() {
 	echo "python3 -m venv venv"
 	python3 -m venv venv
 }
 
-function vnv() {
+vnv() {
 	source ./venv/bin/activate
 }
 
-function dvnv() {
+dvnv() {
 	deactivate
 }
 
-# Kotlin
-function kc() {
+#---[ Python ]------------------------------------------------------------------
+
+
+#---[ Kotlin ]------------------------------------------------------------------
+kc() {
 	"/home/andy/Downloads/kotlinc/bin/kotlinc"
 }
 
-function kcf() {
+kcf() {
 	local kc="/home/andy/Downloads/kotlinc/bin/kotlinc"
 
 	${kc} ${1}.kt -include-runtime -d ${1}.jar
 }
 
-function jf() {
+jf() {
 	java -jar ${1}.jar
 }
 
-#---[ Source Code Manipulation ]------------------------------------------------
+#---[ Kotlin ]------------------------------------------------------------------
 
 
 #---[ File System & fzf ]-------------------------------------------------------
-# cd + fzf
-function sd()
-{
+sd() {
 	# save starting directory (in case of errors)
     local original_dir=$(pwd)
 
@@ -115,13 +107,9 @@ function sd()
 	mark
 
     clear
-	# [Starship]
-	# local outputDir=$(pwd | sed "s|^$HOME|~|")
-    # echo -e "\e[0;36m$outputDir\033[0m"
 }
 
-function hd()
-{
+hd() {
     local originalDir=$(pwd)
 	cd ~
     # local dir=$(find . -type d -not -path '*/venv/*' | fzf)
@@ -139,8 +127,7 @@ function hd()
 }
 
 # mv + fzf
-function mf()
-{
+mf() {
 	local ORIGINAL_DIR=$(pwd)
 	cd ~ || return 1
 
@@ -165,7 +152,7 @@ function mf()
     cd "$ORIGINAL_DIR" || return 1
 }
 
-function md() {
+md() {
 	local ORIGINAL_DIR=$(pwd)
 	cd ~ || return 1
 
@@ -189,7 +176,7 @@ function md() {
 }
 
 # cp + fzf
-function cf() {
+cf() {
 	local ORIGINAL_DIR=$(pwd)
 	cd ~ || return 1
 
@@ -213,7 +200,7 @@ function cf() {
 }
 
 # rm + fzf -> recycle bin
-function rf() {
+rf() {
 	# save current working directory
 	local ORIGINAL_DIR=$(pwd)
 	local RECYCLE_DIR="/home/andy/.recycle"
@@ -237,7 +224,7 @@ function rf() {
     cd "$ORIGINAL_DIR" || return 1
 }
 
-function rd() {
+rd() {
 	# save current working directory
 	local ORIGINAL_DIR=$(pwd)
 	local RECYCLE_DIR="/home/andy/.recycle"
@@ -262,7 +249,7 @@ function rd() {
 }
 
 # cd into file's directory
-function ff() {
+ff() {
     local original_dir="$PWD"
     cd ~ || return
 
@@ -287,7 +274,7 @@ function ff() {
 
 # cd into directory w/ file
 # Function to find a file using fzf and cd to its directory
-function hf() {
+hf() {
     local original_dir="$PWD"
     cd ~ || return
 
@@ -314,7 +301,7 @@ function hf() {
 #---[ File System & fzf ]-------------------------------------------------------
 
 #---[ Obsidian ]----------------------------------------------------------------
-function oo() {
+oo() {
 	local vault_dir="$HOME/pfiles/vaults/Vault/01-Notes/"
 	nvim "$vault_dir"
 }
@@ -322,7 +309,7 @@ function oo() {
 
 #---[ recycle bin ]-------------------------------------------------------------
 # dump .recycle/
-function recycle() {
+recycle() {
 	rm -rf "/home/andy/.recycle"
 	echo  "rm -rf ~/.recycle"
 
@@ -335,7 +322,7 @@ function recycle() {
 
 #---[ $PATH ]-------------------------------------------------------------------
 # nicer output for echo $PATH
-function path() {
+path() {
 	echo "${PATH//:/$'\n'}" | uniq -u | sort | nl
 }
 
@@ -343,13 +330,13 @@ function path() {
 
 
 # mkdir + cd into it
-function mkd() {
+mkd() {
 	mkdir -pv "$@"
 	cd "$@" || return 1
 }
 
 # lists previous commands using search term
-function greph() {
+greph() {
 	# Usage: greph <term> [count]	
 	# - count: defaults to 10
 	local count="$2"
@@ -362,7 +349,7 @@ function greph() {
 }
 
 # i am a self-respecting, functional adult
-function uwu_senpai_pweez() {
+uwu_senpai_pweez() {
 	local file="$1"
 
 	if [[ -z $file ]]; then
@@ -374,20 +361,20 @@ function uwu_senpai_pweez() {
 }
 
 # because <tab> is 1 keystroke too many
-function uwu() {
+uwu() {
 	uwu_senpai_pweez $@
 }
 
-function nuzzles() {
+nuzzles() {
 	echo "uwu nuzzles you uwu"
 }
 
-function clip() {
+clip() {
 	cat "$@" | xclip -selection c -r
 	# cat "$@" | xclip -selection clipboard -loops 1
 }
 
-function graph() {
+graph() {
 	# Usage: graph [commit_count]	
 	# - defaults to showing all commits
 	local commit_count=$1
@@ -397,3 +384,18 @@ function graph() {
 		git log --graph --oneline --all -n ${commit_count}
 	fi
 }
+
+
+#---[ Lynx Browsing ]----------------------------------------------------------
+LYNX_CMD="lynx -cfg=$HOME/.config/lynx/lynx.cfg -lss=$HOME/.config/lynx/lynx.lss"
+
+duck() {
+	$LYNX_CMD "https://duckduckgo.com/?q=$(printf '%s' "$*" | sed 's/ /+/g')"
+}
+
+google() {
+	$LYNX_CMD "https://google.com/search?q=$(printf '%s' "$*" | sed 's/ /+/g')"
+}
+
+#---[ Lynx Browsing ]----------------------------------------------------------
+

@@ -6,6 +6,8 @@ work="$HOME/pfiles/workspace"
 alias dots="cd $dots"
 alias conf="cd $conf"
 
+alias vault="cd $HOME/pfiles/vaults/Vault"
+
 alias res="cd $work/local/res"
 alias monk="cd $work/github.com/tontacchi/monkey"
 alias engine="cd $work/github.com/tontacchi/search"
@@ -23,10 +25,12 @@ alias rofic="cd $dots/rofi"
 
 #―――[ Common Directories ]――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
+
 #―――[ sudo Prompt ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 alias sudo="sudo -A"
 
 #―――[ bash Prompt ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+
 
 #―――[ Silly ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 # lmao thanks reddit
@@ -36,6 +40,7 @@ alias fucking="sudo"
 alias sl="sl -e"
 
 #―――[ Silly ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+
 
 #―――[ git Shortcuts ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 alias gd="git diff"
@@ -86,3 +91,6 @@ alias tmux="TERM=screen-256color-bce tmux"
 # yt-dlp
 alias yt-dlp="~/.local/bin/yt-dlp"
 
+
+alias ?="duck"
+alias ??="google"
