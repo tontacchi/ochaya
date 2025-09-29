@@ -1,0 +1,27 @@
+/* Used by powermenu.sh */
+
+@import "colors.rasi"
+
+* {
+    background-color: @bg;
+    text-color:       @fg;
+
+	font: "Hack Nerd Font Mono 12";
+}
+
+window {
+    width:   210px;
+    padding: 25px;
+
+    border:		   2px;
+    border-color:  @se;
+	border-radius: 5px;
+
+    location: center;
+    anchor:   center;
+}
+
+entry {
+    expand:     true;
+    text-color: @ac;
+}

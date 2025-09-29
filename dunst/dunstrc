@@ -73,20 +73,23 @@
 
 [urgency_low]
 	background  = "#141c21"
-	foreground  = "#93a1a1"
-	frame_color = "#8bc34a"
+	foreground  = "#FFFFFF"
+	# frame_color = "#8bc34a"
+	frame_color = "#8E7CC3"
 	timeout = 5
 
 [urgency_normal]
 	background  = "#141c21"
-	foreground  = "#93a1a1"
-	frame_color = "#ba68c8"
+	foreground  = "#FFFFFF"
+	# frame_color = "#8bc34a"
+	frame_color = "#8E7CC3"
 	timeout = 5
 
 [urgency_critical]
 	background  = "#141c21"
-	foreground  = "#93a1a1"
-	frame_color = "#ff7043"
+	foreground  = "#FFFFFF"
+	# frame_color = "#8bc34a"
+	frame_color = "#8E7CC3"
 	timeout = 0
 
 

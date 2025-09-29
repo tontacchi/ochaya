@@ -76,13 +76,15 @@ bindsym Mod1+n       exec --no-startup-id cinnamon-settings network
 
 bindsym Ctrl+Shift+s exec gnome-screenshot --area
 
-bindsym Mod1+x       exec --no-startup-id ~/.config/i3/i3lock.sh
+# bindsym Mod1+x       exec --no-startup-id ~/.config/i3/i3lock.sh
 bindsym Mod4+v       exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 #―――[ Applications ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
-
+bindsym Mod4+p exec --no-startup-id ~/.ochaya/scripts/powermenu.sh
+bindsym Mod4+l       exec --no-startup-id ~/.ochaya/scripts/no-ring.sh
 bindsym Mod4+t       exec --no-startup-id notify-send "Current Time:" "$(date +"%a %-d %b at %H:%M")"
+bindsym Mod1+b       exec --no-startup-id ~/.ochaya/scripts/bookmarks.sh
 
 
 #―――[ Window Focus, Movement, & Resizing ]――――――――――――――――――――――――――――――――――――――
@@ -228,10 +230,12 @@ default_border pixel 2
 default_floating_border none
 
 # class                 border  background text    indicator child_border
-client.focused          #B8B8F0 #B8B8F0    #FFFFFF #8E7CC3   #8E7CC3
+client.focused          #8E7CC3 #8E7CC3    #FFFFFF #8E7CC3   #8E7CC3
 client.unfocused        #2A1B45 #1A132F    #D9D1E5 #1A132F   #1A132F
 client.focused_inactive #444444 #222222    #888888 #292929   #292929
 client.urgent           #E09EFF #E09EFF    #FFFFFF #E09EFF   #E09EFF
+
+for_window [class=\".*\"] border pixel 1
 
 #―――[ Borders ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
@@ -254,9 +258,9 @@ gaps inner 15
 
 
 #―――[ Setup Other Apps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――
-exec polybar
+exec --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id picom
-# exec --no-startup-id feh --bg-scale ~/pfiles/images/wallpapers/ganyu-keqing.jpg
+exec --no-startup-id feh --bg-scale ~/pfiles/images/wallpapers/full-moon-reflection.jpeg
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec diodon &
 
