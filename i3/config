@@ -35,21 +35,28 @@ bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # incremental brightness adjustment
-bindsym Mod4+minus exec --no-startup-id sudo brightnessctl set 5%-
-bindsym Mod4+equal exec --no-startup-id sudo brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +5%
 
 # set brightness positions
-bindsym Mod4+Shift+underscore exec --no-startup-id sudo brightnessctl set 10%
-bindsym Mod4+Shift+plus       exec --no-startup-id sudo brightnessctl set 50%
+bindsym Mod4+Shift+underscore exec --no-startup-id brightnessctl set 10%
+bindsym Mod4+Shift+plus       exec --no-startup-id brightnessctl set 50%
 
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
+
+# cursor theme throughout i3 (moved to ~/.profile)
+# exec --no-startup-id export XCURSOR_THEME="Bibata-Modern-Classic"
+# exec --no-startup-id export XCURSOR_SIZE=24
 
 # start a terminal
 bindsym Mod1+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym Mod1+Shift+q kill
+
+# force Bibata cursors on all windows
+# exec_always --no-startup-id xsetroot -cursor_name left_ptr
 
 #―――[ Program Launcher ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 # Modern dmenu replacement
@@ -71,8 +78,8 @@ bindsym Mod4+Shift+1 exec --no-startup-id firefox --private-window
 bindsym Mod4+3       exec --no-startup-id ~/.local/bin/vesktop
 bindsym Mod4+4       exec --no-startup-id ~/.local/bin/obsidian
 
-bindsym Mod1+Shift+f exec --no-startup-id thunar
-bindsym Mod1+n       exec --no-startup-id cinnamon-settings network
+bindsym Mod4+Shift+f exec --no-startup-id thunar
+bindsym Mod4+n       exec --no-startup-id cinnamon-settings network
 
 bindsym Ctrl+Shift+s exec gnome-screenshot --area
 
@@ -251,7 +258,7 @@ for_window [class=\".*\"] border pixel 1
 
 
 #―――[ Gaps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-gaps inner 15
+gaps inner 12
 # gaps outer 10
 
 #―――[ Gaps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
@@ -260,11 +267,9 @@ gaps inner 15
 #―――[ Setup Other Apps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――
 exec --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id picom
-exec --no-startup-id feh --bg-scale ~/pfiles/images/wallpapers/full-moon-reflection.jpeg
+exec --no-startup-id feh --bg-fill ~/.ochaya/wallpapers/sakura-katana.jpg
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec diodon &
-
-# exec greenclip daemon
 
 #―――[ Setup Other Apps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――
 

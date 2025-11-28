@@ -17,7 +17,7 @@ safe_link() {
 # safe_link "${dots}/bash/bashrc"       "$HOME/.bashrc"
 # safe_link "${dots}/bash/aliases.sh"   "$HOME/.bash_aliases"
 # safe_link "${dots}/bash/functions.sh" "$HOME/.bash_functions"
-# safe_link "${dots}/nvim"      "${conf}/nvim"
+safe_link "${dots}/nvim"      "${conf}/nvim"
 # safe_link "${dots}/vimrc"     "$HOME/.vimrc"
 # safe_link "${dots}/tmux.conf" "$HOME/.tmux.conf"
 # safe_link "${dots}/i3"      "${conf}/i3"
@@ -27,7 +27,7 @@ safe_link() {
 # safe_link "${dots}/dunst"   "${conf}/dunst"
 # safe_link "${dots}/neofetch/"              "${conf}/neofetch"
 # safe_link "${dots}/starship/starship.toml" "${conf}/starship.toml"
-safe_link "${dots}/cava" "${conf}/cava"
-safe_link "${dots}/fzf"  "${conf}/fzf"
+# safe_link "${dots}/cava" "${conf}/cava"
+# safe_link "${dots}/fzf"  "${conf}/fzf"
 
 echo "Symlinks updated to point to ~/${dots}"

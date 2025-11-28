@@ -43,6 +43,11 @@ nvimc() {
 	(cd "${nvim_config_path}" && nvim .)
 }
 
+cssobsidian() {
+	local obsidian_css_path="$HOME/vaults/Vault/Vault/.obsidian/snippets/"
+	(cd "${obsidian_css_path}" && nvim .)
+}
+
 
 #---[ Python ]------------------------------------------------------------------
 py() {

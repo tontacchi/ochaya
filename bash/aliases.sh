@@ -1,19 +1,19 @@
 #―――[ Common Directories ]――――――――――――――――――――――――――――――――――――――――――――――――――――――
 dots="$HOME/.ochaya"
 conf="$HOME/.config"
-work="$HOME/pfiles/workspace"
+work="$HOME/pfiles/dev"
+
+alias vault="cd $HOME/pfiles/vaults/Vault"
 
 alias dots="cd $dots"
 alias conf="cd $conf"
-
-alias vault="cd $HOME/pfiles/vaults/Vault"
 
 alias res="cd $work/local/res"
 alias monk="cd $work/github.com/tontacchi/monkey"
 alias engine="cd $work/github.com/tontacchi/search"
 
-alias github="cd $work/github.com"
-alias tontacchi="cd $work/github.com/tontacchi"
+alias github="cd $work/github"
+alias tontacchi="cd $work/github/tontacchi"
 alias dev="cd $work/local"
 alias theory="open $HOME/pfiles/books/textbooks/CS-Theory/ &"
 
@@ -38,6 +38,7 @@ alias sl="sl -e"
 #―――[ Silly ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
 alias fd="fdfind"
+alias nivm="nvim"
 
 #―――[ git Shortcuts ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 alias gd="git diff"

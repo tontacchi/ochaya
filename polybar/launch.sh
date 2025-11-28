@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# Terminate already running bar instances
-killall -q polybar
+THEME="sakura"
 
-# Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+killall polybar
+while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
 
-dir="$HOME/.config/polybar"
+THEME_DIR=$(dirname $0)/themes/$THEME/config.ini
 
-# launch bars
-polybar -q bar -c "$dir/config.ini" &
-
+polybar main -c $THEME_DIR &

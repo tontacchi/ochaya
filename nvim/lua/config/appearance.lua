@@ -59,3 +59,13 @@ vim.api.nvim_set_hl(0, "@boolean.lua", { bold = false, fg = "#FA9C2B" })
 vim.api.nvim_set_hl(0, "@boolean.python", { bold = false, fg = "#FA9C2B" })
 vim.api.nvim_set_hl(0, "@boolean.kotlin", { bold = false, fg = "#FA9C2B" })
 
+
+
+
+
+-- blink autocomplete & documentation borders
+vim.api.nvim_set_hl(0, "BlinkCmpMenu",       { bg = "#1e1e2e" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa" })
+
+vim.api.nvim_set_hl(0, "BlinkCmpDoc",       { bg = "#1e1e2e" })
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa" })
