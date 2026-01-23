@@ -8,7 +8,7 @@ local blinkConfigFunc = function()
 			nerd_font_variant = "normal",
 		},
 		sources    = {
-			default   = { "lsp", "path", "snippets", "buffer" },
+			default   = { "lsp", "path", "buffer" },
 			providers = {
 				cmdline = {
 					min_keyword_length = 2,

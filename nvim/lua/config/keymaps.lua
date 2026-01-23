@@ -1,17 +1,10 @@
 -- netrw (does not work with oil.nvim by default)
 vim.keymap.set("n", "<leader>pv", "<cmd>Ex<cr>")
 
--- esc w/ alt + d
-vim.keymap.set("v", "<M-d>", "<esc>")
-vim.keymap.set("i", "<M-d>", "<esc>")
-
 -- source under cursor / highlight
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<cr>")  -- source & run entire file
 vim.keymap.set("n", "<space>x", ":.lua<cr>")                 -- run current line
 vim.keymap.set("v", "<space>x", ":lua<cr>")                  -- run highlighted lines
-
--- netrw (does not work with oil.nvim by default)
-vim.keymap.set("n", "<leader>pv", "<cmd>Ex<cr>")
 
 -- toggle folds
 vim.keymap.set("n", ",", "za")
@@ -28,9 +21,6 @@ vim.keymap.set("i", "<F13>", "<esc>")
 -- vim.keymap.set("n", "<tab>", "<cmd>tabnext<cr>")
 -- vim.keymap.set("n", "<s-tab>", "<cmd>tabprev<cr>")
 
--- comment line(s)
--- vim.keymap.set("n", "<c-_>", function() require('Comment.api').toggle.linewise.current() end, { noremap = true, silent = true })
-
 -- duplicate current window w/ split
 vim.keymap.set("n", "<space>ss", "<cmd>split<cr>")
 vim.keymap.set("n", "<space>sv", "<cmd>vsplit<cr>")
@@ -38,13 +28,13 @@ vim.keymap.set("n", "<space>sv", "<cmd>vsplit<cr>")
 -- terminal to right, <esc> exits terminal mode
 vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
 vim.keymap.set("n", "<space>te", function()
-  vim.cmd.vnew()
-  vim.cmd.te()
-  vim.cmd.wincmd("L")
+	vim.cmd.vnew()
+	vim.cmd.te()
+	vim.cmd.wincmd("L")
 end)
 
--- floating terminal
--- vim.keymap.set("n", "<space>ty", require("plugin.floaterminal").toggle, { desc = "Toggle Floating Terminal" })
+-- floating terminal (plugin.floaterminal -> nvim/lua/plugin/floaterminal.lua)
+vim.keymap.set("n", "<space>ty", require("plugin.floaterminal").toggle, { desc = "Toggle Floating Terminal" })
 
 -- small terminal at bottom of screen
 vim.keymap.set("n", "<leader>ts", function()
@@ -67,7 +57,7 @@ vim.keymap.set("n", "<space>Y", "\"+y")  -- 3) starts motion. lines jumped are y
 vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("v", "x", '"_x')
 
--- append line below w/ space. cursor stays in place
+-- bring up line under cursor, separated by space. cursor stays in place
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- keep cursor in place during half page jumps
@@ -120,5 +110,5 @@ vim.api.nvim_create_user_command("Q", "q", { nargs = 0 })
 
 -- e.g. in your on_attach callback or a general LSP keymap file
 vim.keymap.set("n", "gd", function()
-  vim.lsp.buf.definition()
+	vim.lsp.buf.definition()
 end, { desc = "Go to definition", silent = true })

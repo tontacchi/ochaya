@@ -89,9 +89,10 @@ bindsym Mod4+v       exec rofi -modi "clipboard:greenclip print" -show clipboard
 #―――[ Applications ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
 bindsym Mod4+p exec --no-startup-id ~/.ochaya/scripts/powermenu.sh
-bindsym Mod4+l       exec --no-startup-id ~/.ochaya/scripts/no-ring.sh
-bindsym Mod4+t       exec --no-startup-id notify-send "Current Time:" "$(date +"%a %-d %b at %H:%M")"
-bindsym Mod1+b       exec --no-startup-id ~/.ochaya/scripts/bookmarks.sh
+bindsym Mod4+l exec --no-startup-id ~/.ochaya/scripts/no-ring.sh
+bindsym Mod4+t exec --no-startup-id notify-send "Current Time:" "$(date +"%a %-d %b at %H:%M")"
+bindsym Mod4+b exec --no-startup-id ~/.ochaya/scripts/bookmarks.sh
+bindsym Mod1+b exec polybar-msg cmd toggle
 
 
 #―――[ Window Focus, Movement, & Resizing ]――――――――――――――――――――――――――――――――――――――
@@ -258,7 +259,7 @@ for_window [class=\".*\"] border pixel 1
 
 
 #―――[ Gaps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-gaps inner 12
+gaps inner 7
 # gaps outer 10
 
 #―――[ Gaps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――

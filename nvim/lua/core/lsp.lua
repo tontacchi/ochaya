@@ -21,6 +21,7 @@ vim.lsp.enable({
     "gopls",
     "lua_ls",
 	"clangd",
+	"emmet_ls",
 })
 
 -- diagnostic info

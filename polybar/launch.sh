@@ -1,10 +1,13 @@
 #!/bin/bash
 
-THEME="sakura"
+# variables
+theme="sakura"
+theme_dir=$(dirname $0)/themes/$theme/config.ini
 
+# close all polybar instances
 killall polybar
 while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
 
-THEME_DIR=$(dirname $0)/themes/$THEME/config.ini
+# launch 
+polybar main -c $theme_dir &
 
-polybar main -c $THEME_DIR &

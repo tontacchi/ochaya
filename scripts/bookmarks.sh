@@ -2,8 +2,8 @@
 set -eu
 
 # file locations
-PERS_FILE="${PERS_FILE:-$HOME/pfiles/vaults/Vault/100-bookmarks/personal.md}"
-WORK_FILE="${WORK_FILE:-$HOME/pfiles/vaults/Vault/100-bookmarks/work.md}"
+PERS_FILE="${PERS_FILE:-$HOME/vaults/Vault/100-bookmarks/personal.md}"
+WORK_FILE="${WORK_FILE:-$HOME/vaults/Vault/100-bookmarks/work.md}"
 YT_FILE="${YT_FILE:-$HOME/pfiles/vaults/Vault/100-bookmarks/youtube.md}"
 
 # Rofi command

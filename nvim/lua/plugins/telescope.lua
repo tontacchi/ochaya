@@ -89,8 +89,6 @@ local telescope_table = {{
 
 		-- "telescope undo"
 		vim.keymap.set("n", "<space>tu", "<cmd>Telescope undo<cr>")
-
-		-- require("config.telescope.multigrep").setup()
 	end
 }}
 

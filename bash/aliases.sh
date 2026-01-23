@@ -3,10 +3,11 @@ dots="$HOME/.ochaya"
 conf="$HOME/.config"
 work="$HOME/pfiles/dev"
 
-alias vault="cd $HOME/pfiles/vaults/Vault"
+alias vault="cd $HOME/vaults/Vault"
 
 alias dots="cd $dots"
 alias conf="cd $conf"
+alias pfiles="cd $HOME/pfiles"
 
 alias res="cd $work/local/res"
 alias monk="cd $work/github.com/tontacchi/monkey"
@@ -39,6 +40,10 @@ alias sl="sl -e"
 
 alias fd="fdfind"
 alias nivm="nvim"
+alias c="cd"
+alias h="cd ~"
+alias yt="yt-dlp"
+alias srt="transcript"
 
 #―――[ git Shortcuts ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 alias gd="git diff"
@@ -86,9 +91,3 @@ alias ics="ssh aatontha@circinus-60.ics.uci.edu"
 # try: keep terminal color scheme for tmux
 alias tmux="TERM=screen-256color-bce tmux"
 
-# yt-dlp
-alias yt-dlp="~/.local/bin/yt-dlp"
-
-
-alias ?="duck"
-alias ??="google"
