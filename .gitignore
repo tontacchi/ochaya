@@ -2,8 +2,5 @@
 nvim/lazy-lock.json
 
 # backups
-<<<<<<< HEAD
-=======
 polybar-bak/
->>>>>>> 1799030 (feat: disabled nvim Snippets autocomplete, new polybar directory setup)
 nvim-bak/
