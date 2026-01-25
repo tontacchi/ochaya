@@ -1,11 +1,49 @@
+local function sectionmode()
+	local mode = vim.fn.mode()
+
+	-- Decide the mode text mini should display
+	local label_map = {
+		n  = "力",
+		i  = "字",
+		v  = "目",
+		V  = "一",
+		["\22"] = "口",
+		c  = "入",
+		R  = "上",
+		t  = "",
+	}
+
+	-- Decide which highlight group mini should use
+	local hl_map = {
+		n = "MiniStatuslineModeNormal",
+		i = "MiniStatuslineModeInsert",
+		v = "MiniStatuslineModeVisual",
+		V = "MiniStatuslineModeVisual",
+		["\22"] = "MiniStatuslineModeVisual",
+		R = "MiniStatuslineModeReplace",
+		c = "MiniStatuslineModeCommand",
+		t = "MiniStatuslineModeOther",
+	}
+
+	-- creating both return values
+	-- local text = " " .. (label_map[mode] or mode) .. " "
+	local text = label_map[mode] or mode
+	local hl = hl_map[mode] or "MiniStatuslineModeOther"
+
+	return text, hl
+end
+
 local mini_table = {{
 	"echasnovski/mini.nvim",
 	config = function ()
-		local status_line = require("mini.statusline")
-		local surround    = require("mini.surround")
+		local statusline = require("mini.statusline")
+		local surround   = require("mini.surround")
 
 		-- status bar at the bottom
-		status_line.setup({ use_icons = true })
+		statusline.setup({ use_icons = true })
+
+		-- changes mode text displayed
+		statusline.section_mode = sectionmode
 
 		-- surround + setup keybinds
 		surround.setup({
