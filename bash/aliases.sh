@@ -7,7 +7,7 @@ alias vault="cd $HOME/vaults/Vault"
 
 alias dots="cd $dots"
 alias conf="cd $conf"
-alias pfiles="cd $HOME/pfiles"
+alias pf="cd $HOME/pfiles"
 
 alias github="cd $work/github"
 alias tontacchi="cd $work/github/tontacchi"
