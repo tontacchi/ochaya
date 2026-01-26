@@ -1,10 +1,66 @@
+-- ====================================
+-- Useful Function Pointers & Variables
+-- ====================================
+local map  = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+local Ex   = function(text) return "<cmd>" .. text .. "<cr>" end
+local lead = function(text) return "<space>" .. text end
+
+local nv = {"n", "v"}
+
+-- =========================
+-- Quality-of-life / General
+-- =========================
+
+map("n", "<esc>",  Ex "nohlsearch")
+map("n", lead "w", Ex "write")
+map("n", lead "W", Ex "wall")
+map("n", lead "q", Ex "x")
+map("n", lead "Q", Ex "qa")
+map("n", lead "x", Ex "quit")
+map("n", lead "c", Ex "close")
+map("n", lead "h", Ex "help")
+map("n", lead "e", Ex "edit %:p:h")
+map("n", lead "H", Ex "enew")
+
+map("n", "Y", "y$")
+map("n", "U", "<c-r>")
+map(nv, "H", "^")
+map(nv, "L", "$")
+
+
+-- =========================
+-- Better movement / editing
+-- =========================
+
+map("n", "<c-d>", "<c-d>zz")
+map("n", "<c-u>", "<c-u>zz")
+map("n", "*", "*zzzv")
+map("n", "#", "#zzzv")
+
+map("v", ">", ">gv")
+map("v", "<", "<gv")
+map("v", "J", ":m '>+1<cr>gv=gv")
+map("v", "K", ":m '<-2<cr>gv=gv")
+
+map(nv, lead "p", '"0p')
+map(nv, lead "d", '"_d')
+
+map("n", lead "k", Ex "lnext" .. "zz")
+map("n", lead "j", Ex "lprev" .. "zz")
+
+
+
+
+
 -- netrw (does not work with oil.nvim by default)
 vim.keymap.set("n", "<leader>pv", "<cmd>Ex<cr>")
 
 -- source under cursor / highlight
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<cr>")  -- source & run entire file
-vim.keymap.set("n", "<space>x", ":.lua<cr>")                 -- run current line
-vim.keymap.set("v", "<space>x", ":lua<cr>")                  -- run highlighted lines
+-- vim.keymap.set("n", "<space>x", ":.lua<cr>")                 -- run current line
+-- vim.keymap.set("v", "<space>x", ":lua<cr>")                  -- run highlighted lines
 
 -- toggle folds
 vim.keymap.set("n", ",", "za")
@@ -44,9 +100,6 @@ vim.keymap.set("n", "<leader>ts", function()
 	vim.api.nvim_win_set_height(0, 5)
 end)
 
--- move lines while reformating
-vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
 
 -- yank -> system clipboard
 vim.keymap.set("v", "<space>y", "\"+y")  -- 1) highlighted
@@ -59,10 +112,6 @@ vim.keymap.set("v", "x", '"_x')
 
 -- bring up line under cursor, separated by space. cursor stays in place
 vim.keymap.set("n", "J", "mzJ`z")
-
--- keep cursor in place during half page jumps
-vim.keymap.set("n", "<c-d>", "<c-d>zz")
-vim.keymap.set("n", "<c-u>", "<c-u>zz")
 
 -- first paste over highlight does not overwrite yanked text
 vim.keymap.set("x", "<space>p", "\"_dP")
