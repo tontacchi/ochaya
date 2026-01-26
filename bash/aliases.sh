@@ -9,13 +9,16 @@ alias dots="cd $dots"
 alias conf="cd $conf"
 alias pfiles="cd $HOME/pfiles"
 
+alias github="cd $work/github"
+alias tontacchi="cd $work/github/tontacchi"
+alias dev="cd $work/local"
+
+alias odin="cd $work/github/tontacchi/odin/"
+
 alias res="cd $work/local/res"
 alias monk="cd $work/github.com/tontacchi/monkey"
 alias engine="cd $work/github.com/tontacchi/search"
 
-alias github="cd $work/github"
-alias tontacchi="cd $work/github/tontacchi"
-alias dev="cd $work/local"
 alias theory="open $HOME/pfiles/books/textbooks/CS-Theory/ &"
 
 alias i3c="cd $dots/i3"
