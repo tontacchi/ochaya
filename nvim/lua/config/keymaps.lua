@@ -1,25 +1,25 @@
--- ====================================
--- Useful Function Pointers & Variables
--- ====================================
+-- =============================================================================
+-- Function Pointers, Variables, Tables
+-- =============================================================================
 local map  = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-local Ex   = function(text) return "<cmd>" .. text .. "<cr>" end
+local Ex   = function(text) return "<cmd>"      .. text .. "<cr>" end
+local Norm = function(text) return "<cmd>norm " .. text .. "<cr>" end
 local lead = function(text) return "<space>" .. text end
 
 local nv = {"n", "v"}
 
--- =========================
+-- =============================================================================
 -- Quality-of-life / General
--- =========================
+-- =============================================================================
 
 map("n", "<esc>",  Ex "nohlsearch")
 map("n", lead "w", Ex "write")
 map("n", lead "W", Ex "wall")
-map("n", lead "q", Ex "x")
+map("n", lead "q", Ex "wq")
 map("n", lead "Q", Ex "qa")
-map("n", lead "x", Ex "quit")
-map("n", lead "c", Ex "close")
+map("n", lead "x", Ex "q!")
 map("n", lead "h", Ex "help")
 map("n", lead "e", Ex "edit %:p:h")
 map("n", lead "H", Ex "enew")
@@ -30,9 +30,9 @@ map(nv, "H", "^")
 map(nv, "L", "$")
 
 
--- =========================
+-- =============================================================================
 -- Better movement / editing
--- =========================
+-- =============================================================================
 
 map("n", "<c-d>", "<c-d>zz")
 map("n", "<c-u>", "<c-u>zz")
@@ -44,33 +44,39 @@ map("v", "<", "<gv")
 map("v", "J", ":m '>+1<cr>gv=gv")
 map("v", "K", ":m '<-2<cr>gv=gv")
 
-map(nv, lead "p", '"0p')
-map(nv, lead "d", '"_d')
-
 map("n", lead "k", Ex "lnext" .. "zz")
 map("n", lead "j", Ex "lprev" .. "zz")
 
+map("i", "<c-BS>", "<c-w>", opts)
+map("i", "<c-h>", "<c-w>", opts)
+
+map("n", "\\", Norm "gcc")
+map("v", "\\", "gc", { remap = true })
 
 
+-- =============================================================================
+-- LSP (built-in) + Diagnostics
+-- =============================================================================
+map("n", lead "do", vim.diagnostic.open_float, opts)
 
 
 -- netrw (does not work with oil.nvim by default)
-vim.keymap.set("n", "<leader>pv", "<cmd>Ex<cr>")
+map("n", lead "pv", Ex "Ex")
 
 -- source under cursor / highlight
-vim.keymap.set("n", "<space><space>x", "<cmd>source %<cr>")  -- source & run entire file
+map("n", lead(lead "x"), function() Ex "source %" print("sourced file") end)  -- source & run entire file
 -- vim.keymap.set("n", "<space>x", ":.lua<cr>")                 -- run current line
 -- vim.keymap.set("v", "<space>x", ":lua<cr>")                  -- run highlighted lines
 
 -- toggle folds
-vim.keymap.set("n", ",", "za")
+map("n", ",", "za")
 
 -- <F1> is a misclicked <esc>(:h is still available)
-vim.keymap.set("n", "<F1>", "<esc>")
-vim.keymap.set("v", "<F1>", "<esc>")
-vim.keymap.set("i", "<F1>", "<esc>")
-vim.keymap.set("c", "<F1>", "<esc>")
-vim.keymap.set("i", "<F13>", "<esc>")
+map("n", "<F1>", "<esc>")
+map("v", "<F1>", "<esc>")
+map("i", "<F1>", "<esc>")
+map("i", "<F13>", "<esc>")
+map("c", "<F1>", "<esc>")
 
 -- new tab
 -- vim.keymap.set("n", "<space>te", "<cmd>tabedit<cr>")
@@ -78,22 +84,22 @@ vim.keymap.set("i", "<F13>", "<esc>")
 -- vim.keymap.set("n", "<s-tab>", "<cmd>tabprev<cr>")
 
 -- duplicate current window w/ split
-vim.keymap.set("n", "<space>ss", "<cmd>split<cr>")
-vim.keymap.set("n", "<space>sv", "<cmd>vsplit<cr>")
+map("n", lead "ss", Ex "split")
+map("n", lead "sv", Ex "vsplit")
 
 -- terminal to right, <esc> exits terminal mode
-vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
-vim.keymap.set("n", "<space>te", function()
+map("t", "<esc>", "<C-\\><C-N>")
+map("n", lead "te", function()
 	vim.cmd.vnew()
 	vim.cmd.te()
 	vim.cmd.wincmd("L")
 end)
 
 -- floating terminal (plugin.floaterminal -> nvim/lua/plugin/floaterminal.lua)
-vim.keymap.set("n", "<space>ty", require("plugin.floaterminal").toggle, { desc = "Toggle Floating Terminal" })
+map("n", lead "ty", require("plugin.floaterminal").toggle)
 
 -- small terminal at bottom of screen
-vim.keymap.set("n", "<leader>ts", function()
+map("n", lead "ts", function()
 	vim.cmd.new()
 	vim.cmd.te()
 	vim.cmd.wincmd("J")
@@ -102,22 +108,25 @@ end)
 
 
 -- yank -> system clipboard
-vim.keymap.set("v", "<space>y", "\"+y")  -- 1) highlighted
-vim.keymap.set("n", "<space>y", "\"+Y")  -- 2) current line
-vim.keymap.set("n", "<space>Y", "\"+y")  -- 3) starts motion. lines jumped are yanked
+map("n", lead "y", "\"+Y")
+map("v", lead "y", "\"+y")
+map("n", lead "Y", "\"+y")  -- motion. finish with {num}{direction}
+
+-- vim.keymap.set("v", "<space>y", "\"+y")  -- 1) highlighted
+-- vim.keymap.set("n", "<space>y", "\"+Y")  -- 2) current line
+-- vim.keymap.set("n", "<space>Y", "\"+y")  -- 3) starts motion. lines jumped are yanked
 
 -- don't yank to register
-vim.keymap.set("n", "x", '"_x')
-vim.keymap.set("v", "x", '"_x')
+map(nv, "x", '"_x')
 
 -- bring up line under cursor, separated by space. cursor stays in place
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- first paste over highlight does not overwrite yanked text
-vim.keymap.set("x", "<space>p", "\"_dP")
+map("x", lead "p", "\"_dP")
 
 -- substitute / replace all instances of word under cursor
-vim.keymap.set("n", "<space>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", lead "ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- TODO: fix to somehow grab the word under the cursor
 vim.keymap.set("v", "<space>ra",  [[:s/\<\>//gI<Left><Left><Left><Left><Left><Left>]])
@@ -132,11 +141,11 @@ vim.keymap.set("i", "<c-j>", "<c-n>")
 vim.keymap.set("i", "<c-k>", "<c-p>")
 
 -- restart language server
-vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>")
+map("n", lead "lr", Ex "LspRestart")
 
 -- toggle diagnostic text
 local showDiagnostic = true
-vim.keymap.set("n", "<leader>lv", function()
+map("n", lead "lv", function()
 	showDiagnostic = not showDiagnostic
 	vim.diagnostic.config({
 		virtual_text = showDiagnostic,
@@ -151,13 +160,7 @@ vim.keymap.set("n", "<leader>lv", function()
 	end
 end)
 
--- captialize guard for file saving
-vim.api.nvim_create_user_command("W", "w", { nargs = 0 })
-vim.api.nvim_create_user_command("Wq", "wq", { nargs = 0 })
-vim.api.nvim_create_user_command("WQ", "wq", { nargs = 0 })
-vim.api.nvim_create_user_command("Q", "q", { nargs = 0 })
-
 -- e.g. in your on_attach callback or a general LSP keymap file
-vim.keymap.set("n", "gd", function()
+map("n", "gd", function()
 	vim.lsp.buf.definition()
 end, { desc = "Go to definition", silent = true })

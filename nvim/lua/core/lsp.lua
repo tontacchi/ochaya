@@ -22,6 +22,7 @@ vim.lsp.enable({
     "lua_ls",
 	"clangd",
 	"emmet_ls",
+	"html_lsp",
 })
 
 -- diagnostic info

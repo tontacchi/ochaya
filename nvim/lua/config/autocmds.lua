@@ -18,10 +18,20 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end
 })
 
--- disables CSS comment continuation
+-- disables CSS comment * continuation
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "css",
 	callback = function()
 		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
 	end,
 })
+
+-- disables markdown `ex:` firing
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.opt_local.modeline = false
+	end,
+	group = vim.api.nvim_create_augroup("MarkdownNoModeline", { clear = true }),
+})
+
