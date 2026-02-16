@@ -177,3 +177,7 @@ export SUDO_ASKPASS="$HOME/.ochaya/scripts/askpass.sh"
 # [fzf]
 export FZF_DEFAULT_OPTS="$(cat ~/.config/fzf/fzf.conf)"
 
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
