@@ -11,7 +11,7 @@ scrape_transcripts() {
 	url="$1"
 	title="$2"
 
-	yt-dlp \
+	yt-dlp --js-runtimes bun:/home/andy/.bun/bin/bun \
 		--skip-download \
 		--write-subs \
 		--write-auto-subs \

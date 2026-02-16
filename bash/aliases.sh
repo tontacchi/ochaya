@@ -13,6 +13,8 @@ alias github="cd $work/github"
 alias tontacchi="cd $work/github/tontacchi"
 alias dev="cd $work/local"
 
+alias wani="cd $work/github/tontacchi/wanikani"
+alias port="cd $work/github/tontacchi/portfolio"
 alias odin="cd $work/github/tontacchi/odin/"
 
 alias res="cd $work/local/res"
@@ -45,7 +47,7 @@ alias fd="fdfind"
 alias nivm="nvim"
 alias c="cd"
 alias h="cd ~"
-alias yt="yt-dlp"
+alias yt="yt-dlp --js-runtimes bun:/home/andy/.bun/bin/bun"
 alias srt="transcript"
 
 #―――[ git Shortcuts ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
