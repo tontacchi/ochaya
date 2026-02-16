@@ -19,6 +19,12 @@ esac
 HISTCONTROL=ignoreboth
 HISTIGNORE="history*:ls*:cd*:..:dots:conf:tontacchi*:github:dev:c:exit:q:bye*:logout:off:graph:gs:ga*:gc*:gp*:gpu*"
 
+
+#---[ Startup From Previous Close ]---------------------------------------------
+cd $(cat ~/.lastdir)
+
+#---[ Startup From Previous Close ]---------------------------------------------
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 

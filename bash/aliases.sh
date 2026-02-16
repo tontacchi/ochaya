@@ -81,8 +81,8 @@ alias lwaf="lw -aFw 70";
 
 alias ..="cd ..";
 
-alias :q="exit"
-alias q="exit"
+alias :q="quit"
+alias q="quit"
 
 alias fhere="find . -name";
 
