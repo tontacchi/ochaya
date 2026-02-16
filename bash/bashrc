@@ -21,6 +21,7 @@ HISTIGNORE="history*:ls*:cd*:..:dots:conf:tontacchi*:github:dev:c:exit:q:bye*:lo
 
 
 #---[ Startup From Previous Close ]---------------------------------------------
+cd ~
 cd $(cat ~/.lastdir)
 
 #---[ Startup From Previous Close ]---------------------------------------------

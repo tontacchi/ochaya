@@ -45,6 +45,7 @@ alias sl="sl -e"
 
 alias fd="fdfind"
 alias nivm="nvim"
+alias n="nvim ."
 alias c="cd"
 alias h="cd ~"
 alias yt="yt-dlp --js-runtimes bun:/home/andy/.bun/bin/bun"
