@@ -50,8 +50,8 @@ map("n", lead "j", Ex "lprev" .. "zz")
 map("i", "<c-BS>", "<c-w>", opts)
 map("i", "<c-h>", "<c-w>", opts)
 
-map("n", "\\", Norm "gcc")
-map("v", "\\", "gc", { remap = true })
+map("n", lead "\\", Norm "gcc")
+map("v", lead "\\", "gc", { remap = true })
 
 
 -- =============================================================================
