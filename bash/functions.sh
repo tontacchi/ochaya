@@ -11,19 +11,6 @@ JUMP_INDEX=1
 #---[ Global Variables ]--------------------------------------------------------
 
 
-# thanks kelsey
-go() {
-	# usage: go fuck yourself -> go build
-	# - anything else -> normal go command
-	
-	if [[ "$1" == "fuck" && "$2" == "yourself" ]]; then
-		command go build
-	else
-		command go "$@"
-	fi
-}
-
-
 # takes a username & logs them out whoops
 bye() {
 	sudo pkill -KILL -u $1
@@ -389,18 +376,4 @@ graph() {
 		git log --graph --oneline --all -n ${commit_count}
 	fi
 }
-
-
-#---[ Lynx Browsing ]----------------------------------------------------------
-LYNX_CMD="lynx -cfg=$HOME/.config/lynx/lynx.cfg -lss=$HOME/.config/lynx/lynx.lss"
-
-duck() {
-	$LYNX_CMD "https://duckduckgo.com/?q=$(printf '%s' "$*" | sed 's/ /+/g')"
-}
-
-google() {
-	$LYNX_CMD "https://google.com/search?q=$(printf '%s' "$*" | sed 's/ /+/g')"
-}
-
-#---[ Lynx Browsing ]----------------------------------------------------------
 
