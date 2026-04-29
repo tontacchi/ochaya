@@ -3,11 +3,11 @@ dots="$HOME/.ochaya"
 conf="$HOME/.config"
 work="$HOME/pfiles/dev"
 
+alias vesk="cd $HOME/.var/app/dev.vencord.Vesktop/config/vesktop/themes"
 alias vault="cd $HOME/vaults/Vault"
 
 alias dots="cd $dots"
 alias conf="cd $conf"
-alias pf="cd $HOME/pfiles"
 
 alias github="cd $work/github"
 alias tontacchi="cd $work/github/tontacchi"
@@ -43,9 +43,10 @@ alias sl="sl -e"
 
 #―――[ Silly ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
+alias thu="thunar . &"
 alias fd="fdfind"
 alias nivm="nvim"
-alias c="cd"
+# alias c="cd"
 alias h="cd ~"
 alias yt="yt-dlp --js-runtimes bun:/home/andy/.bun/bin/bun"
 alias srt="transcript"
@@ -65,7 +66,9 @@ alias gl="git log"
 alias gb="git branch"
 
 alias gi="git init"
-alias gcl="git clone"
+
+# replaced with gcl() shell function in functions.sh
+# alias gcl="git clone"
 
 #―――[ git Shortcuts ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
@@ -95,4 +98,7 @@ alias ics="ssh aatontha@circinus-60.ics.uci.edu"
 
 # try: keep terminal color scheme for tmux
 alias tmux="TERM=screen-256color-bce tmux"
+
+
+alias server="py -m http.server"
 

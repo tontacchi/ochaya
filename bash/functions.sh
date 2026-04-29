@@ -10,6 +10,13 @@ JUMP_LIST=($HOME)
 JUMP_INDEX=1
 #---[ Global Variables ]--------------------------------------------------------
 
+c() {
+	if [[ $# -eq 1 ]]; then
+		cd "$1"
+	else
+		cd $HOME/pfiles/
+	fi
+}
 
 # takes a username & logs them out whoops
 bye() {
@@ -394,3 +401,44 @@ play() {
 }
 
 #---[ Media Player ]------------------------------------------------------------
+
+
+gcl() {
+	local default_user="tontacchi"
+
+	case "$#" in
+	# repo name or url only
+	1)
+		# url as only parameter matches pattern
+		case "$1" in http://*|https://*|git@*:*|ssh://*)
+			git clone "$1"
+			;;
+		# repo as only parameter, does not match url pattern
+		*)
+			git clone "https://github.com/${default_user}/$1"
+			;;
+		esac
+		;;
+	# username & repo, on github
+	2)
+		git clone "https://github.com/$1/$2"
+		;;
+	# host, username, repo
+	3)
+		git clone "https://$1/$2/$3"
+		;;
+	# default: show usage
+	*)
+		echo "usage:"
+		echo "  gcl repo"
+		echo "  gcl user repo"
+		echo "  gcl host user repo"
+		echo "  gcl https://host/user/repo"
+
+		return 1
+		;;
+	esac
+
+	return 0
+}
+

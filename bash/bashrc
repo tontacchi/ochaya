@@ -16,13 +16,13 @@ esac
 
 # Don't put duplicate lines / lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
-HISTIGNORE="history*:ls*:cd*:..:dots:conf:tontacchi*:github:dev:c:exit:q:bye*:logout:off:graph:gs:ga*:gc*:gp*:gpu*"
+# HISTCONTROL=ignoreboth
+# HISTIGNORE="history*:ls*:cd*:..:dots:conf:tontacchi*:github:dev:c:exit:q:bye*:logout:off:graph:gs:ga*:gc*:gp*:gpu*"
 
 
 #---[ Startup From Previous Close ]---------------------------------------------
-cd ~
-cd $(cat ~/.lastdir)
+# cd ~
+# cd $(cat ~/.lastdir)
 
 #---[ Startup From Previous Close ]---------------------------------------------
 
@@ -188,3 +188,8 @@ export FZF_DEFAULT_OPTS="$(cat ~/.config/fzf/fzf.conf)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# uncomment for testing shell config
+# cd ~/.ochaya/bash/
+
