@@ -29,5 +29,6 @@ safe_link "${dots}/nvim"      "${conf}/nvim"
 # safe_link "${dots}/starship/starship.toml" "${conf}/starship.toml"
 # safe_link "${dots}/cava" "${conf}/cava"
 # safe_link "${dots}/fzf"  "${conf}/fzf"
+safe_link "${dots}/vesktop/" "$HOME/.var/app/dev.vencord.Vesktop/config/vesktop/themes"
 
 echo "Symlinks updated to point to ~/${dots}"
