@@ -344,8 +344,8 @@ mkd() {
 }
 
 # lists previous commands using search term
-greph() {
-	# Usage: greph <term> [count]	
+hg() {
+	# Usage: hg <term> [count]	
 	# - count: defaults to 10
 	local count="$2"
 

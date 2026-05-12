@@ -56,6 +56,7 @@ alias gd="git diff"
 
 alias gs="git status"
 alias ga="git add"
+alias gap="git add -p"
 alias gc="git commit"
 
 alias gf="git fetch"
