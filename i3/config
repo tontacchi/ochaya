@@ -74,7 +74,7 @@ bindsym Mod4+4       exec --no-startup-id ~/.local/bin/obsidian
 bindsym Mod4+Shift+f exec --no-startup-id thunar
 bindsym Mod4+n       exec --no-startup-id cinnamon-settings network
 
-bindsym Ctrl+Shift+s exec gnome-screenshot --area
+bindsym Ctrl+Shift+s exec --no-startup-id ~/.ochaya/scripts/screenshot.sh
 bindsym Ctrl+Mod1+j  exec --no-startup-id ~/.ochaya/scripts/jpinput.sh
 
 # bindsym Mod1+x       exec --no-startup-id ~/.config/i3/i3lock.sh
