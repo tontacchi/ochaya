@@ -1,8 +1,14 @@
-local noice_table = {{
+local noice = {
 	"folke/noice.nvim",
 	dependencies = {
 		"MunifTanjim/nui.nvim",
-		"rcarriga/nvim-notify"
+		{
+			"rcarriga/nvim-notify",
+			opts = {
+				stages = "fade_in_slide_out",
+				timeout = 2000,
+			},
+		},
 	},
 	event = "VeryLazy",
 	opts = {
@@ -29,7 +35,7 @@ local noice_table = {{
 			bottom_search = false,
 		},
 		routes = {
-			{ filter = { find = "E162" }, view = "mini" },
+			{ filter = { find = "E162" }, view = "notify" },
 			{ filter = { event = "msg_show", kind = "", find = "written" }, view = "mini" },
 			{ filter = { event = "msg_show", find = "search hit BOTTOM" }, skip = true },
 			{ filter = { event = "msg_show", find = "search hit TOP" }, skip = true },
@@ -39,6 +45,7 @@ local noice_table = {{
 			{ filter = { find = "E37" }, skip = true },
 		}
 	}
-}}
+};
 
-return noice_table
+local noice_table = { noice };
+return noice_table;

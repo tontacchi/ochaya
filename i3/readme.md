@@ -3,4 +3,3 @@
 
 - This config file uses keycodes (bindsym) and was written for the QWERTY layout.
     - To get a config file with the same key positions, but for your current layout, use the `i3-config-wizard`
-

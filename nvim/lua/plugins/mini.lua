@@ -60,8 +60,8 @@ local mini_table = {{
 				suffix_next = 'n', -- Suffix to search with "next" method
 			},
 			custom_surroundings = {
-				['('] = { output = { left = '(', right = ')' } },
-				[')'] = { output = { left = '( ', right = ' )' } },
+				-- ['('] = { output = { left = '(', right = ')' } },
+				-- [')'] = { output = { left = '( ', right = ' )' } },
 			}
 		})
 	end

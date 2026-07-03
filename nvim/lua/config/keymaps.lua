@@ -14,7 +14,7 @@ local nv = {"n", "v"}
 -- Quality-of-life / General
 -- =============================================================================
 
-map("n", "<esc>",  Ex "nohlsearch")
+-- map("n", "<esc>",  Ex "nohlsearch")
 map("n", lead "w", Ex "write")
 map("n", lead "W", Ex "wall")
 map("n", lead "q", Ex "wq")
@@ -69,7 +69,37 @@ map("n", lead(lead "x"), function() Ex "source %" print("sourced file") end)  --
 -- vim.keymap.set("v", "<space>x", ":lua<cr>")                  -- run highlighted lines
 
 -- toggle folds
-map("n", ",", "za")
+map("n", ",", function()
+	local searchResult = vim.fn.getcharsearch()
+
+	if searchResult.char == "" then
+		return "za"
+	end
+
+	return ","
+end, { expr = true })
+
+map("n", "<esc>", function()
+	local clear = {
+		char    = "",
+		forward = 1,
+		["until"] = 1
+	}
+	vim.fn.setcharsearch(clear)
+
+	return "<cmd>nohlsearch<cr>" .. "<cmd>NoiceDismiss<cr>"
+end, { expr = true })
+
+-- toggle something
+map("n", ";", function()
+	local searchResult = vim.fn.getcharsearch()
+
+	if searchResult.char == "" then
+		return "za"
+	end
+
+	return ";"
+end, { expr = true })
 
 -- <F1> is a misclicked <esc>(:h is still available)
 map("n", "<F1>", "<esc>")
@@ -164,3 +194,9 @@ end)
 map("n", "gd", function()
 	vim.lsp.buf.definition()
 end, { desc = "Go to definition", silent = true })
+
+
+-- dismiss mini.nvim's notifications
+-- Dismiss notifications with <Esc> or any other key combo
+-- map("n", "<Esc>", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss mini.notify popups" })
+

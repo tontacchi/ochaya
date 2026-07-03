@@ -10,13 +10,64 @@ JUMP_LIST=($HOME)
 JUMP_INDEX=1
 #---[ Global Variables ]--------------------------------------------------------
 
-c() {
-	if [[ $# -eq 1 ]]; then
-		cd "$1"
-	else
-		cd $HOME/pfiles/
-	fi
+save_dir() {
+	pwd > "$HOME/.ochaya/sakura-terminal/last-pwd.txt"
 }
+
+c() {
+	local path=""
+
+	if (( $# == 0 )); then
+		path="$HOME/pfiles"
+	else
+		printf -v path '%s/' "$@"
+		path=${path%/}
+	fi
+
+	cd -- "$path" || return	
+	save_dir
+}
+
+_c_complete() {
+	local current base candidate i
+
+	current="${COMP_WORDS[COMP_CWORD]}"
+	base="."
+
+	# The ".." command implicitly contributes one parent directory.
+	if [[ ${COMP_WORDS[0]} == ".." ]]; then
+		base=".."
+	fi
+
+	# resolve completion relative to all preceding arguments
+	for ((i = 1; i < COMP_CWORD; i++)); do
+		base+="/${COMP_WORDS[i]}"
+	done
+
+	COMPREPLY=()
+
+	while IFS= read -r candidate; do
+		# return only the current path component, not accumulated base
+		candidate=${candidate#"$base"/}
+		COMPREPLY+=("$candidate")
+	done < <(compgen -d -- "$base/$current")
+}
+
+complete -o filenames -o nospace -F _c_complete c
+
+# shorthand for "$ c .."
+# ▸ repeatable, with same <tab> autocomplete semantics
+#   ▸ ex: $ .. .. goes up 2 directory levels
+function .. {
+	c .. "$@"
+}
+
+complete -o filenames -o nospace -F _c_complete ..
+
+hist() {
+	eval $(history | fzf +s | sed 's/^[ ]*[0-9]*[ ]*//')
+}
+
 
 # takes a username & logs them out whoops
 bye() {
@@ -45,7 +96,7 @@ cssobsidian() {
 
 #---[ Jump List ]---------------------------------------------------------------
 quit() {
-	pwd > ~/.lastdir
+	save_dir
 	exit
 }
 
@@ -357,7 +408,7 @@ hg() {
 }
 
 # i am a self-respecting, functional adult
-uwu_senpai_pweez() {
+uwu() {
 	local file="$1"
 
 	if [[ -z $file ]]; then
@@ -366,15 +417,6 @@ uwu_senpai_pweez() {
 
 	source ${file}
 	echo -e "わかった、ソースを教えてあげる\n"
-}
-
-# because <tab> is 1 keystroke too many
-uwu() {
-	uwu_senpai_pweez $@
-}
-
-nuzzles() {
-	echo "uwu nuzzles you uwu"
 }
 
 clip() {
@@ -440,5 +482,76 @@ gcl() {
 	esac
 
 	return 0
+}
+
+
+
+# node version manager / nvm
+load_nodejs() {
+	# check shell session already loaded nvm
+	if [[ -n "${nodejs_loaded:-}" ]]; then
+		return 0
+	fi
+
+	# remove lazy wrappers
+	unset -f nvm node npm npx
+
+	# check & load nvm
+	if [[ -s "$NVM_DIR/nvm.sh" ]]; then
+		[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+	else
+		notify-send "load_nodejs" "nvm.sh not found"
+		return 1
+	fi
+
+	# cache marker for shell session
+	nodejs_loaded=1
+
+	return 0
+}
+
+nvm() {
+	load_nodejs || return $?
+    nvm "$@"
+}
+
+node() {
+	# load_nodejs || return $?
+    node "$@"
+}
+
+npm() {
+	# load_nodejs || return $?
+    npm "$@"
+}
+
+npx() {
+	# load_nodejs || return $?
+    npx "$@"
+}
+
+
+n() {
+	# load_nodejs || return $?
+
+	if [[ $# -eq 0 ]]; then
+		nvim .
+		return 0
+	fi
+
+	nvim "$@"
+}
+
+
+localbin() {
+	cd "$HOME/.local/bin/"
+}
+
+mkgo() {
+	mkd "$1"
+	go mod init "$1"
+
+	echo "package main" > main.go
+	mkdir internal
 }
 

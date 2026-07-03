@@ -18,9 +18,6 @@ $character"""
 # Disable the blank line at the start of the prompt
 add_newline = true
 
-# Timeout in milliseconds for commands to finish executing
-command_timeout = 50
-
 [line_break]
 disabled = true
 

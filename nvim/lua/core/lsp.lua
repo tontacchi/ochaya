@@ -23,6 +23,8 @@ vim.lsp.enable({
 	"clangd",
 	"emmet_ls",
 	"html_lsp",
+	"tsgo",
+	"postgres_lsp",
 })
 
 -- diagnostic info

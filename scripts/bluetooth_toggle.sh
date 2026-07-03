@@ -1,10 +1,9 @@
 #!/bin/bash
-notify-send "toggle script ran"
 
 if [ $(bluetoothctl show | grep "Powered: yes" | wc -c) -eq 0 ]; then
 	bluetoothctl power on
-	notify-send "bluetooth powered on!"
+	notify-send "Bluetooth Toggle" "Powered on!"
 else
 	bluetoothctl power off
-	notify-send "bluetooth powered off!"
+	notify-send "Bluetooth Toggle" "Powered off!"
 fi

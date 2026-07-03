@@ -4,30 +4,30 @@ conf="$HOME/.config"
 work="$HOME/pfiles/dev"
 
 alias vesk="cd $HOME/.var/app/dev.vencord.Vesktop/config/vesktop/themes"
-alias vault="cd $HOME/vaults/Vault"
+alias vault="c $HOME/vaults/Vault"
 
-alias dots="cd $dots"
-alias conf="cd $conf"
+alias dots="c $dots"
+alias conf="c $conf"
 
-alias github="cd $work/github"
-alias tontacchi="cd $work/github/tontacchi"
-alias dev="cd $work/local"
+alias github="c $work/github"
+alias tontacchi="c $work/github/tontacchi"
+alias dev="c $work/local"
 
-alias wani="cd $work/github/tontacchi/wanikani"
-alias port="cd $work/github/tontacchi/portfolio"
-alias odin="cd $work/github/tontacchi/odin/"
+alias wani="c $work/github/tontacchi/wanikani"
+alias port="c $work/github/tontacchi/portfolio"
+alias odin="c $work/github/tontacchi/odin/"
 
-alias res="cd $work/local/res"
-alias monk="cd $work/github.com/tontacchi/monkey"
-alias engine="cd $work/github.com/tontacchi/search"
+alias res="c $work/github/tontacchi/.res"
+alias monk="c $work/github.com/tontacchi/monkey"
+alias engine="c $work/github.com/tontacchi/search"
 
 alias theory="open $HOME/pfiles/books/textbooks/CS-Theory/ &"
 
-alias i3c="cd $dots/i3"
-alias picomc="cd $dots/picom"
-alias polybarc="cd $dots/polybar"
-alias dunstc="cd $dots/dunst"
-alias rofic="cd $dots/rofi"
+alias i3c="c $dots/i3"
+alias picomc="c $dots/picom"
+alias polybarc="c $dots/polybar"
+alias dunstc="c $dots/dunst"
+alias rofic="c $dots/rofi"
 
 #―――[ Common Directories ]――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
@@ -83,7 +83,8 @@ alias lwaf="lw -aFw 70";
 
 #―――[ ls Variations ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
-alias ..="cd ..";
+# moved to functions.sh
+# alias ..="cd ..";
 
 alias :q="quit"
 alias q="quit"

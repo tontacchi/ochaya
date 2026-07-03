@@ -1,12 +1,15 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 
-# Adds existing, unique paths
+# only unique paths added to $PATH
 add_paths() {
 	for d in "$@"; do
 		[[ -d "$d" && ! "$PATH" =~ (^|:)$d(:|$) ]] && PATH="$PATH:$d"
 	done
 }
+
+# [ sakura ] color scheme
+~/.ochaya/sakura-terminal/terminal-colors.sh
 
 # If not running interactively, don't do anything
 case $- in
@@ -18,13 +21,6 @@ esac
 # See bash(1) for more options
 # HISTCONTROL=ignoreboth
 # HISTIGNORE="history*:ls*:cd*:..:dots:conf:tontacchi*:github:dev:c:exit:q:bye*:logout:off:graph:gs:ga*:gc*:gp*:gpu*"
-
-
-#---[ Startup From Previous Close ]---------------------------------------------
-# cd ~
-# cd $(cat ~/.lastdir)
-
-#---[ Startup From Previous Close ]---------------------------------------------
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -70,6 +66,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# [temp] check if prompts are needed
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
@@ -111,13 +108,23 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+if [ -f ~/.bash_functions ]; then
+	. ~/.bash_functions
+fi
+
+# Load alias & function files
+# if [ -e $HOME/.bash_aliases ]; then
+#     source $HOME/.bash_aliases
+# fi
+#
+# if [ -e $HOME/.bash_functions ]; then
+#     source $HOME/.bash_functions
+# fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -130,49 +137,22 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Load alias & function files
-if [ -e $HOME/.bash_aliases ]; then
-    source $HOME/.bash_aliases
-fi
 
-if [ -e $HOME/.bash_functions ]; then
-    source $HOME/.bash_functions
-fi
+bind 'set completion-ignore-case on'
 
-# nvim binary
-# export PATH="$PATH:/opt/nvim-linux64/bin"
-# alias nvim="/opt/nvim-linux64/bin/nvim"
-alias kc="/home/andy/Downloads/kotlinc/bin/kotlinc"
-
-#---[ User Aliases ]--------------------------------------------------------{{{
-bind -s 'set completion-ignore-case on'
-
-# ctrl + l -> cls() from bash_functions. clears screen & prints cwd w/o pwd
-# bind -x '"\C-l":clear'
-
-# Prompt Colors
-# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-# PS1='\033[01;32m$\033[0m '
-# PS1='\[\033[01;32m\]$\[\033[0m\] '
-
-#---------------------------------------------------------------------------}}}
-
+# Default Node version available immediately, without loading nvm.
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+add_paths "$NVM_DIR/versions/node/v24.10.0/bin"
 
-add_paths /usr/local/go/bin /usr/local/nvim/bin $HOME/launchers
-add_paths $HOME/go/bin
-add_paths $HOME/.config/lynx
-
-# export PATH="$PATH:/usr/local/go/bin"
-# export PATH="$PATH:/opt/nvim-linux64/bin"
-
-# DELETE: only for bootdev's CLI tool. delete when done
-# export PATH="$PATH:$HOME/go/bin"
+add_paths /usr/local/go/bin
+add_paths /usr/local/nvim/bin
+add_paths ~/launchers
+add_paths ~/go/bin
+add_paths ~/.config/lynx
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
 
 # [starship]
 export STARSHIP_CONFIG=${HOME}/.config/starship.toml
@@ -184,12 +164,12 @@ export SUDO_ASKPASS="$HOME/.ochaya/scripts/askpass.sh"
 # [fzf]
 export FZF_DEFAULT_OPTS="$(cat ~/.config/fzf/fzf.conf)"
 
-
-# bun
+# [bun]
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-
-# uncomment for testing shell config
-# cd ~/.ochaya/bash/
+# [nvm / node version manager]
+# lazy loads, instead of loading on every shell startup
+export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 

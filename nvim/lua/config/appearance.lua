@@ -1,8 +1,11 @@
 vim.opt.termguicolors = true
 
+local light_blue = "#89b4fa"
+
+local border_color = light_blue
+
 -- Make the background transparent
 vim.api.nvim_set_hl(0, "Normal",       { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat",  { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC",     { bg = "none" })
 vim.api.nvim_set_hl(0, "StatusLine",   { bg = "none", fg = "#ffffff" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none", fg = "#aaaaaa" })
@@ -26,12 +29,19 @@ vim.api.nvim_set_hl(0, "MiniStatuslineFileinfo", { bg = "none", fg = "#c8c093" }
 vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo",  { bg = "none", fg = "#c8c093" })
 
 -- Telescope borders
-local curr_telescope_border_fg = vim.api.nvim_get_hl(0, { name = "TelescopeBorder" }).fg
-vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none", fg = curr_telescope_border_fg })
+-- local curr_telescope_border_fg = vim.api.nvim_get_hl(0, { name = "TelescopeBorder" }).fg
+-- vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none", fg = curr_telescope_border_fg })
 
--- floating window borders
+
+-- Geometry: should there be a border, and what shape?
+vim.o.winborder = "rounded";
+
+-- Appearance: what colors should that border use?
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#89b4fa", bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = border_color, bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = border_color, bg="none" })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#f7e29c", bg = "none" })
+
 
 -- Noice Command Line borders
 local curr_function_fg = vim.api.nvim_get_hl(0, { name = "Function" }).fg
@@ -57,12 +67,9 @@ vim.api.nvim_set_hl(0, "FoldColumn", { bg = "none", fg = "#aaaaaa" }) -- For the
 -- set characters after line fold as blank
 vim.opt.fillchars:append({ fold = " " })
 
-vim.api.nvim_set_hl(0, "@boolean.lua", { bold = false, fg = "#FA9C2B" })
+vim.api.nvim_set_hl(0, "@boolean.lua",    { bold = false, fg = "#FA9C2B" })
 vim.api.nvim_set_hl(0, "@boolean.python", { bold = false, fg = "#FA9C2B" })
 vim.api.nvim_set_hl(0, "@boolean.kotlin", { bold = false, fg = "#FA9C2B" })
-
-
-
 
 
 -- blink autocomplete & documentation borders
@@ -71,3 +78,4 @@ vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa" })
 
 vim.api.nvim_set_hl(0, "BlinkCmpDoc",       { bg = "#1e1e2e" })
 vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa" })
+
