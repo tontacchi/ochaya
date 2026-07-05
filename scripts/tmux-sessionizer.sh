@@ -68,6 +68,15 @@ add_window() {
 	fi
 }
 
+send_keys() {
+	local name="$1"
+	local commands="${2:-}"
+
+	if [[ -n "$commands" ]]; then
+		tmux send-keys -t "$session:$name" "$commands" C-m
+	fi
+}
+
 
 # project launchers
 launch_goflix() {
@@ -75,28 +84,19 @@ launch_goflix() {
 
 	create_session "$session" "$dir"
 
-	first_window "backend" "$dir" "n"
-	add_window "frontend" "$dir/frontend" "n"
-	add_window "server" "$dir" "go run ."
+	first_window "backend" "$dir"
+	send_keys "backend" "clear"
+	send_keys "backend" "n"
+	add_window "frontend" "$dir/frontend"
+	send_keys "frontend" "clear"
+	send_keys "frontend" "n"
+	add_window "server" "$dir"
+	send_keys "server" "set -a"
+	send_keys "server" "source .env"
+	send_keys "server" "set +a"
+	send_keys "server" "clear"
+	send_keys "server" "go run cmd/goflix/main.go"
 }
-
-# launch_goflix() {
-# 	dir="$academic/$project"
-#
-# 	create_session "$session" "$dir"
-#
-# 	# [backend:1]
-# 	tmux rename-window -t "$session:1" "backend"
-# 	tmux send-keys -t "$session:backend" "n" C-m
-#
-# 	# [frontend:2]
-# 	tmux new-window -t "$session" -n "frontend" -c "$dir/frontend"
-# 	tmux send-keys -t "$session:frontend" "n" C-m
-#
-# 	# [localhost:3]
-# 	tmux new-window -t "$session" -n "localhost" -c "$dir"
-# 	tmux send-keys -t "$session:localhost" "go run ." C-m
-# }
 
 launch_markview() {
 	local vault="$HOME/vaults/Vault/"

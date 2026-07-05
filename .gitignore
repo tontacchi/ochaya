@@ -4,3 +4,7 @@ nvim/lazy-lock.json
 # backups
 polybar-bak/
 nvim-bak/
+
+# last directory
+sakura-terminal/last-pwd.txt
+

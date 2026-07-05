@@ -2,17 +2,9 @@
 font pango:monospace 8
 
 #―――[ Setup Other Apps ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――
-exec --no-startup-id notify-send "i3" "feh start"
 exec --no-startup-id feh --bg-fill ~/.ochaya/wallpapers/sakura-katana.jpg
-
-exec --no-startup-id notify-send "i3" "picom start"
 exec --no-startup-id picom
-
-exec --no-startup-id notify-send "i3" "polybar start"
 exec --no-startup-id ~/.config/polybar/launch.sh
-
-exec --no-startup-id notify-send "i3" "UI done!"
-
 exec --no-startup-id diodon &
 exec --no-startup-id dunst &
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -99,7 +91,7 @@ bindsym Mod4+Shift+f exec --no-startup-id thunar
 bindsym Mod4+n       exec --no-startup-id cinnamon-settings network
 
 bindsym Ctrl+Shift+s exec --no-startup-id ~/.ochaya/scripts/screenshot.sh
-bindsym Mod4+j  exec --no-startup-id ~/.ochaya/scripts/jpinput.sh
+bindsym Mod4+j       exec --no-startup-id ~/.ochaya/scripts/jpinput.sh
 
 # bindsym Mod1+x       exec --no-startup-id ~/.config/i3/i3lock.sh
 # bindsym Mod4+v       exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
@@ -251,8 +243,8 @@ mode "resize" {
 
 
 #―――[ Borders ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-default_border pixel 2
-default_floating_border none
+default_border pixel 0
+default_floating_border pixel 0
 
 # class                 border  background text    indicator child_border
 client.focused          #8E7CC3 #8E7CC3    #FFFFFF #8E7CC3   #8E7CC3
@@ -260,18 +252,18 @@ client.unfocused        #2A1B45 #1A132F    #D9D1E5 #1A132F   #1A132F
 client.focused_inactive #444444 #222222    #888888 #292929   #292929
 client.urgent           #E09EFF #E09EFF    #FFFFFF #E09EFF   #E09EFF
 
-for_window [class=\".*\"] border pixel 1
+# for_window [class=\".*\"] border pixel 4
 
 #―――[ Borders ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
 
 # blueman opens in the corner and small
-for_window [class="Blueman-manager"] floating enable
-for_window [class="Blueman-manager"] resize set 300 400
-for_window [class="Blueman-manager"] move position 1380 px 42 px
+# for_window [class="Blueman-manager"] floating enable
+# for_window [class="Blueman-manager"] resize set 300 400
+# for_window [class="Blueman-manager"] move position 1380 px 42 px
 
 # celluloid opens in the center
-for_window [class="Celluloid"] floating enable, move position center
+# for_window [class="Celluloid"] floating enable, move position center
 
 # automatically start i3-config-wizard to offer the user to create a
 # keysym-based config which used their favorite modifier (alt or windows)
