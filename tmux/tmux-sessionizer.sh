@@ -12,10 +12,10 @@ project=""
 select_project() {
 	project=$(
 		printf '%s\n' \
+			chimp \
 			goflix \
 			markview \
 			requestly \
-			chimp \
 			sudoku |
 			fzf
 		)
@@ -81,21 +81,49 @@ send_keys() {
 # project launchers
 launch_goflix() {
 	local dir="$academic/$project"
-
 	create_session "$session" "$dir"
 
-	first_window "backend" "$dir"
-	send_keys "backend" "clear"
-	send_keys "backend" "n"
-	add_window "frontend" "$dir/frontend"
-	send_keys "frontend" "clear"
-	send_keys "frontend" "n"
-	add_window "server" "$dir"
-	send_keys "server" "set -a"
-	send_keys "server" "source .env"
-	send_keys "server" "set +a"
-	send_keys "server" "clear"
-	send_keys "server" "go run cmd/goflix/main.go"
+	local win_1="backend"
+	local win_2="frontend"
+	local win_3="server"
+
+	first_window "$win_1" "$dir"
+	send_keys "$win_1" "clear"
+	send_keys "$win_1" "n"
+
+	add_window "$win_2" "$dir/frontend"
+	send_keys "$win_2" "clear"
+	send_keys "$win_2" "n"
+
+	add_window "$win_3" "$dir"
+	send_keys "$win_3" "set -a"
+	send_keys "$win_3" "source .env"
+	send_keys "$win_3" "set +a"
+	send_keys "$win_3" "clear"
+	send_keys "$win_3" "go run cmd/goflix/main.go"
+}
+
+launch_chimp() {
+	dir="$academic/$project/"
+	create_session "$session" "$dir"
+
+	# [1:nvim] [2:test] [3:git]
+	local win_1="nvim"
+	local win_2="test"
+	local win_3="git"
+
+	first_window "$win_1" "$dir"
+	send_keys "$win_1" "clear"
+	send_keys "$win_1" "n"
+
+	add_window "$win_2" "$dir"
+	send_keys "$win_2" "clear"
+	send_keys "$win_2" "go test ./..."
+
+	add_window "$win_3" "$dir"
+	send_keys "$win_3" "clear"
+	send_keys "$win_3" "gf"
+	send_keys "$win_3" "gs"
 }
 
 launch_markview() {
@@ -142,21 +170,6 @@ launch_requestly() {
 	tmux new-window -t "$session" -n "wails" -c "$dir"
 	tmux send-keys -t "$session:wails" "npm" C-m
 	tmux send-keys -t "$session:wails" "wails dev -tags webkit2_41" C-m
-}
-
-launch_chimp() {
-	# [nvim:1] [git:2]
-	dir="$ton/$project/"
-
-	create_session "$session" "$dir"
-
-	# [nvim:1]
-	tmux rename-window -t "$session:1" "nvim"
-	tmux send-keys -t "$session:nvim" "n" C-m
-
-	# [git:2]
-	tmux new-window -t "$session" -n "git"
-	tmux send-keys -t "$session:git" "gs" C-m
 }
 
 launch_sudoku() {
